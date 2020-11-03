@@ -77,7 +77,6 @@ C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcor
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\projeto.RazorCoreGenerate.cache
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -93,3 +92,8 @@ C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcor
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\projeto.dll
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\projeto.pdb
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\projeto.genruntimeconfig.cache
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Alocacao.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Funcionarios.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Historico.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Index.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Vagas.cshtml.g.cs

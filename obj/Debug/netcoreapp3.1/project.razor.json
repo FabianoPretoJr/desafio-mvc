@@ -14397,8 +14397,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Alocacao.cshtml",
+      "TargetPath": "Views\\Adm\\Alocacao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Index.cshtml",
+      "TargetPath": "Views\\Adm\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Funcionarios.cshtml",
+      "TargetPath": "Views\\Adm\\Funcionarios.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Vagas.cshtml",
+      "TargetPath": "Views\\Adm\\Vagas.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14412,11 +14432,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -14424,6 +14439,11 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Historico.cshtml",
+      "TargetPath": "Views\\Adm\\Historico.cshtml",
       "FileKind": "mvc"
     },
     {
