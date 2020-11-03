@@ -9,7 +9,7 @@ using projeto.Data;
 namespace projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201103164940_CreateIdentitySchema")]
+    [Migration("20201103172841_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -215,6 +215,156 @@ namespace projeto.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("projeto.Models.Funcionario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cargo")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("GftId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InicioWA")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Matricula")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("MyProperty")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("TerminoWA")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("VagaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GftId");
+
+                    b.HasIndex("VagaId");
+
+                    b.ToTable("funcionarios");
+                });
+
+            modelBuilder.Entity("projeto.Models.FuncionarioTecnologia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TecnologiaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.HasIndex("TecnologiaId");
+
+                    b.ToTable("funcionariostecnologias");
+                });
+
+            modelBuilder.Entity("projeto.Models.Gft", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cep")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Endereco")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("gfts");
+                });
+
+            modelBuilder.Entity("projeto.Models.Tecnologia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tecnologias");
+                });
+
+            modelBuilder.Entity("projeto.Models.Vaga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("AberturaVaga")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("CodVaga")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DescricaoVaga")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Projeto")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("QtdVaga")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("vagas");
+                });
+
+            modelBuilder.Entity("projeto.Models.VagaTecnologia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TecnologiaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("VagaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TecnologiaId");
+
+                    b.HasIndex("VagaId");
+
+                    b.ToTable("vagastecnologias");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -264,6 +414,39 @@ namespace projeto.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("projeto.Models.Funcionario", b =>
+                {
+                    b.HasOne("projeto.Models.Gft", "Gft")
+                        .WithMany()
+                        .HasForeignKey("GftId");
+
+                    b.HasOne("projeto.Models.Vaga", "Vaga")
+                        .WithMany()
+                        .HasForeignKey("VagaId");
+                });
+
+            modelBuilder.Entity("projeto.Models.FuncionarioTecnologia", b =>
+                {
+                    b.HasOne("projeto.Models.Funcionario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId");
+
+                    b.HasOne("projeto.Models.Tecnologia", "Tecnologia")
+                        .WithMany()
+                        .HasForeignKey("TecnologiaId");
+                });
+
+            modelBuilder.Entity("projeto.Models.VagaTecnologia", b =>
+                {
+                    b.HasOne("projeto.Models.Tecnologia", "Tecnologia")
+                        .WithMany()
+                        .HasForeignKey("TecnologiaId");
+
+                    b.HasOne("projeto.Models.Vaga", "Vaga")
+                        .WithMany()
+                        .HasForeignKey("VagaId");
                 });
 #pragma warning restore 612, 618
         }

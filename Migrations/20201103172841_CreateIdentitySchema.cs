@@ -48,6 +48,54 @@ namespace projeto.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "gfts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cep = table.Column<string>(nullable: true),
+                    Cidade = table.Column<string>(nullable: true),
+                    Endereco = table.Column<string>(nullable: true),
+                    Estado = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
+                    Telefone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_gfts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tecnologias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tecnologias", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "vagas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AberturaVaga = table.Column<DateTime>(nullable: false),
+                    CodVaga = table.Column<string>(nullable: true),
+                    DescricaoVaga = table.Column<string>(nullable: true),
+                    Projeto = table.Column<string>(nullable: true),
+                    QtdVaga = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_vagas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -153,6 +201,90 @@ namespace projeto.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "funcionarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cargo = table.Column<string>(nullable: true),
+                    InicioWA = table.Column<DateTime>(nullable: false),
+                    Matricula = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
+                    TerminoWA = table.Column<DateTime>(nullable: false),
+                    MyProperty = table.Column<int>(nullable: false),
+                    VagaId = table.Column<int>(nullable: true),
+                    GftId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_funcionarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_funcionarios_gfts_GftId",
+                        column: x => x.GftId,
+                        principalTable: "gfts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_funcionarios_vagas_VagaId",
+                        column: x => x.VagaId,
+                        principalTable: "vagas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "vagastecnologias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    VagaId = table.Column<int>(nullable: true),
+                    TecnologiaId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_vagastecnologias", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_vagastecnologias_tecnologias_TecnologiaId",
+                        column: x => x.TecnologiaId,
+                        principalTable: "tecnologias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_vagastecnologias_vagas_VagaId",
+                        column: x => x.VagaId,
+                        principalTable: "vagas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "funcionariostecnologias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    FuncionarioId = table.Column<int>(nullable: true),
+                    TecnologiaId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_funcionariostecnologias", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_funcionariostecnologias_funcionarios_FuncionarioId",
+                        column: x => x.FuncionarioId,
+                        principalTable: "funcionarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_funcionariostecnologias_tecnologias_TecnologiaId",
+                        column: x => x.TecnologiaId,
+                        principalTable: "tecnologias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -189,6 +321,36 @@ namespace projeto.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_funcionarios_GftId",
+                table: "funcionarios",
+                column: "GftId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_funcionarios_VagaId",
+                table: "funcionarios",
+                column: "VagaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_funcionariostecnologias_FuncionarioId",
+                table: "funcionariostecnologias",
+                column: "FuncionarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_funcionariostecnologias_TecnologiaId",
+                table: "funcionariostecnologias",
+                column: "TecnologiaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_vagastecnologias_TecnologiaId",
+                table: "vagastecnologias",
+                column: "TecnologiaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_vagastecnologias_VagaId",
+                table: "vagastecnologias",
+                column: "VagaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -209,10 +371,28 @@ namespace projeto.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "funcionariostecnologias");
+
+            migrationBuilder.DropTable(
+                name: "vagastecnologias");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "funcionarios");
+
+            migrationBuilder.DropTable(
+                name: "tecnologias");
+
+            migrationBuilder.DropTable(
+                name: "gfts");
+
+            migrationBuilder.DropTable(
+                name: "vagas");
         }
     }
 }
