@@ -1,1 +1,47 @@
-Ola
+@model IEnumerable<projeto.Models.Gft>
+@{
+    ViewData["Title"] = "Unidades";
+    Layout = "_Layout";
+}
+
+<div>
+    <h2>Tecnologias</h2><br/>
+    <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarUnidade">Cadastrar unidades</a>
+</div>
+
+<hr/>
+<table id="tecnologias" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>CEP</th>
+            <th>Cidade</th>
+            <th>Endereço</th>
+            <th>Estado</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+        <tbody>
+        @foreach (var gft in Model)
+            {
+                <tr>
+                    <td>@gft.Id</td>
+                    <td>@gft.Cep</td>
+                    <td>@gft.Cidade</td>
+                    <td>@gft.Endereco</td>
+                    <td>@gft.Estado</td>
+                    <td>@gft.Nome</td>
+                    <td>@gft.Telefone</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Adm/EditarUnidade/@gft.Id">Editar</a> 
+                        <form asp-action="Deletar" asp-controller="Unidade" style="display: inline;">
+                            <input type="hidden" name="id" id="id" value="@gft.Id">
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </td>
+                </tr>                
+            }
+        </tbody>
+</table>

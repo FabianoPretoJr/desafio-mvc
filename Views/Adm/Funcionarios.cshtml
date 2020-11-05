@@ -1,3 +1,4 @@
+@model IEnumerable<projeto.Models.Funcionario>
 @{
     ViewData["Title"] = "Funcionários";
 }
@@ -6,3 +7,42 @@
     <h2>Funcionários em WA</h2><br/>
     <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarFuncionario">Cadastrar funcionários</a>
 </div>
+
+<hr/>
+<table id="vagas" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cargo</th>
+            <th>Inicio WA</th>
+            <th>Matricula</th>
+            <th>Nome</th>
+            <th>Termino WA</th>
+            <th>Vaga</th>
+            <th>GFT</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+        <tbody>
+        @foreach (var func in Model)
+            {
+                <tr>
+                    <td>@func.Id</td>
+                    <td>@func.Cargo</td>
+                    <td>@func.InicioWA</td>
+                    <td>@func.Matricula</td>
+                    <td>@func.Nome</td>
+                    <td>@func.TerminoWA</td>
+                    <td>@func.Vaga.CodVaga</td>
+                    <td>@func.Gft.Nome</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Adm/EditarFuncionario/@func.Id">Editar</a> 
+                        <form asp-action="Deletar" asp-controller="Funcionario" style="display: inline;">
+                            <input type="hidden" name="id" id="id" value="@func.Id"> @*Muito importante que name e id sejam iguais *@
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </td>
+                </tr>                
+            }
+        </tbody>
+</table>

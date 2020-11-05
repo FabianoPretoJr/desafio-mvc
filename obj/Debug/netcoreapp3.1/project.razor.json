@@ -14402,6 +14402,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\CadastrarUnidade.cshtml",
+      "TargetPath": "Views\\Adm\\CadastrarUnidade.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -14439,6 +14444,11 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\EditarTecnologia.cshtml",
       "TargetPath": "Views\\Adm\\EditarTecnologia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\EditarUnidade.cshtml",
+      "TargetPath": "Views\\Adm\\EditarUnidade.cshtml",
       "FileKind": "mvc"
     },
     {

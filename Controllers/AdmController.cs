@@ -4,6 +4,7 @@ using projeto.Models;
 using projeto.DTO;
 using projeto.Data;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace projeto.Controllers
 {
@@ -22,11 +23,16 @@ namespace projeto.Controllers
 
         public IActionResult Funcionarios()
         {
-            return View();
+            var func = database.funcionarios.Include(f => f.Vaga).Include(f => f.Gft).ToList();
+
+            return View(func);
         }
 
         public IActionResult CadastrarFuncionario()
         {
+            ViewBag.gfts = database.gfts.ToList();
+            ViewBag.vagas = database.vagas.ToList();
+
             return View();
         }
 
@@ -84,6 +90,7 @@ namespace projeto.Controllers
             TecnologiaDTO tecnologiaView = new TecnologiaDTO();
 
             var tec = database.tecnologias.First(t => t.Id == id);
+            tecnologiaView.Id = tec.Id;
             tecnologiaView.Nome = tec.Nome;
 
             return View(tecnologiaView);
@@ -91,7 +98,30 @@ namespace projeto.Controllers
 
         public IActionResult Unidades()
         {
+            var unidades = database.gfts.ToList();
+
+            return View(unidades);
+        }
+
+        public IActionResult CadastrarUnidade()
+        {
             return View();
+        }
+
+        public IActionResult EditarUnidade(int id)
+        {
+            GftDTO gftView = new GftDTO();
+
+            var unidade = database.gfts.First(u => u.Id == id);
+            gftView.Id = unidade.Id;
+            gftView.Cep = unidade.Cep;
+            gftView.Cidade = unidade.Cidade;
+            gftView.Endereco = unidade.Endereco;
+            gftView.Estado = unidade.Estado;
+            gftView.Nome = unidade.Nome;
+            gftView.Telefone = unidade.Telefone;
+
+            return View(gftView);
         }
     }
 }

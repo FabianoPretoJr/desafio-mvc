@@ -1,4 +1,41 @@
+@model projeto.DTO.FuncionarioDTO;
 @{
     ViewData["Title"] = "Cad Funcionários";
 }
 
+<h3>Novo funcionário</h3>
+<hr/>
+
+<form method="POST" asp-controller="Funcionario" asp-action="Salvar">
+    <input type="hidden" asp-for="Id" value="0">
+
+    <label>Cargo</label>
+    <input type="text" class="form-control" asp-for="Cargo" placeholder="Software enginner">
+    <span asp-validation-for="Cargo"></span><br/>
+
+    <label>Inicio WA</label>
+    <input type="date" class="form-control" asp-for="InicioWA">
+    <span asp-validation-for="InicioWA"></span><br/>
+
+    <label>Matricula</label>
+    <input type="text" class="form-control" asp-for="Matricula">
+    <span asp-validation-for="Matricula"></span><br/>
+
+    <label>Nome</label>
+    <input type="text" class="form-control" asp-for="Nome">
+    <span asp-validation-for="Nome"></span><br/>
+
+    <label>Termino WA</label>
+    <input type="date" class="form-control" asp-for="TerminoWA">
+    <span asp-validation-for="TerminoWA"></span><br/>
+
+    <label>Unidade GFT</label>
+    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))'></select>
+    <span asp-validation-for="GftID"></span><br/>
+
+    <label>Vaga</label>
+    <select class="form-control" asp-for="VagaID" asp-items='@(new SelectList(@ViewBag.vagas, "Id", "CodVaga"))'></select>
+    <span asp-validation-for="VagaID"></span><br/>
+
+    <button class="btn btn-success">Cadastrar funcionário</button>
+</form>
