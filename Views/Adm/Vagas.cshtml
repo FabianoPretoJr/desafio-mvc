@@ -1,8 +1,45 @@
+@model IEnumerable<projeto.Models.Vaga>
 @{
     ViewData["Title"] = "Vagas";
+    Layout = "_Layout";
 }
 
 <div>
     <h2>Vagas</h2><br/>
-    <button class="btn btn-primary">Cadastrar Vagas</button>
+    <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarVaga">Cadastrar vaga</a>
 </div>
+
+<hr/>
+<table id="vagas" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cod vaga</th>
+            <th>Projeto</th>
+            <th>Qtd vagas</th>
+            <th>Data de abertura</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+        <tbody>
+        @foreach (var vagas in Model)
+            {
+                <tr>
+                    <td>@vagas.Id</td>
+                    <td>@vagas.CodVaga</td>
+                    <td>@vagas.Projeto</td>
+                    <td>@vagas.QtdVaga</td>
+                    <td>@vagas.AberturaVaga</td>
+                    <td>@vagas.DescricaoVaga</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Adm/EditarVaga/@vagas.Id">Editar</a> 
+                        <form asp-action="Deletar" asp-controller="Vagas" style="display: inline;">
+                            <input type="hidden" name="id" id="id" value="@vagas.Id"> @*Muito importante que name e id sejam iguais *@
+                            <button class="btn btn-danger">Deletar</button>
+                        </form>
+                    </td>
+                </tr>                
+            }
+        </tbody>
+</table>

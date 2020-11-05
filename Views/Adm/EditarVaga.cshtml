@@ -1,0 +1,33 @@
+@model projeto.DTO.VagaDTO;
+@{
+    ViewData["Title"] = "Cad Vagas";
+}
+
+<h3>Editar vaga</h3>
+<hr/>
+
+<form method="POST" asp-controller="Vagas" asp-action="Atualizar">
+    <input type="hidden" asp-for="Id">
+
+    <label>Código da vaga</label>
+    <input type="text" class="form-control" asp-for="CodVaga">
+    <span asp-validation-for="CodVaga"></span><br/>
+
+    <label>Projeto referente a vaga</label>
+    <input type="text" asp-for="Projeto" class="form-control">
+    <span asp-validation-for="Projeto"></span><br/>
+
+    <label>Quantidadde de vagas</label>
+    <input type="number" class="form-control" asp-for="QtdVaga">
+    <span asp-validation-for="QtdVaga"></span><br/>
+
+    <label>Data de abertura de vaga</label>
+    <input type="date" asp-for="AberturaVaga" class="form-control">
+    <span asp-validation-for="AberturaVaga"></span><br/>
+
+    <label>Descrição da vaga</label>
+    <textarea rows="5" class="form-control" asp-for="DescricaoVaga"></textarea> 
+    <span asp-validation-for="DescricaoVaga"></span><br/><br/>
+
+    <button class="btn btn-success">Atualizar vaga</button>
+</form>

@@ -14392,13 +14392,33 @@
   "RootNamespace": "projeto",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\CadastrarFuncionario.cshtml",
+      "TargetPath": "Views\\Adm\\CadastrarFuncionario.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Unidades.cshtml",
+      "TargetPath": "Views\\Adm\\Unidades.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Alocacao.cshtml",
       "TargetPath": "Views\\Adm\\Alocacao.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14432,6 +14452,21 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\CadastrarTecnologia.cshtml",
+      "TargetPath": "Views\\Adm\\CadastrarTecnologia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\EditarVaga.cshtml",
+      "TargetPath": "Views\\Adm\\EditarVaga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -14449,6 +14484,21 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\CadastrarVaga.cshtml",
+      "TargetPath": "Views\\Adm\\CadastrarVaga.cshtml",
       "FileKind": "mvc"
     },
     {

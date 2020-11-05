@@ -7,7 +7,7 @@ namespace projeto.DTO
         [Required]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Campo nome obrigatório!")]
         public string Nome { get; set; }
     }
 }
