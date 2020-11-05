@@ -1,0 +1,17 @@
+@model projeto.DTO.TecnologiaDTO;
+@{
+    ViewData["Title"] = "Edi Tecnologia";
+}
+
+<h3>Editar tecnologia</h3>
+<hr/>
+
+<form method="POST" asp-controller="Tecnologia" asp-action="Atualizar">
+    <input type="hidden" asp-for="Id">
+
+    <label>Nome</label>
+    <input type="text" class="form-control" asp-for="Nome" placeholder=".NET">
+    <span asp-validation-for="Nome"></span><br/>
+
+    <button class="btn btn-success">Atualizar tecnologia</button>
+</form>

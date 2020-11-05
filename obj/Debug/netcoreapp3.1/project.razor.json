@@ -14392,6 +14392,11 @@
   "RootNamespace": "projeto",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Tecnologia.cshtml",
+      "TargetPath": "Views\\Adm\\Tecnologia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\CadastrarFuncionario.cshtml",
       "TargetPath": "Views\\Adm\\CadastrarFuncionario.cshtml",
       "FileKind": "mvc"
@@ -14429,6 +14434,11 @@
     {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Funcionarios.cshtml",
       "TargetPath": "Views\\Adm\\Funcionarios.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\EditarTecnologia.cshtml",
+      "TargetPath": "Views\\Adm\\EditarTecnologia.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -69,12 +69,24 @@ namespace projeto.Controllers
 
         public IActionResult Tecnologia()
         {
-            return View();
+            var tecnologias = database.tecnologias.ToList();
+
+            return View(tecnologias);
         }
 
         public IActionResult CadastrarTecnologia()
         {
             return View();
+        }
+
+        public IActionResult EditarTecnologia(int id)
+        {
+            TecnologiaDTO tecnologiaView = new TecnologiaDTO();
+
+            var tec = database.tecnologias.First(t => t.Id == id);
+            tecnologiaView.Nome = tec.Nome;
+
+            return View(tecnologiaView);
         }
 
         public IActionResult Unidades()

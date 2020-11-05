@@ -179,3 +179,5 @@ C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcor
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\EditarVaga.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\CadastrarTecnologia.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Unidades.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\Tecnologia.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\EditarTecnologia.cshtml.g.cs

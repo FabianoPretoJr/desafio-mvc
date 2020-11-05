@@ -45,7 +45,7 @@ namespace projeto.Controllers
         {
             if (ModelState.IsValid)
             {
-                var vaga = database.vagas.First( v => v.Id == vagaTemporaria.Id);
+                var vaga = database.vagas.First(v => v.Id == vagaTemporaria.Id);
 
                 vaga.Id = vagaTemporaria.Id;
                 vaga.CodVaga = vagaTemporaria.CodVaga;
