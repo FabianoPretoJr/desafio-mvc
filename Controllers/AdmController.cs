@@ -36,6 +36,26 @@ namespace projeto.Controllers
             return View();
         }
 
+        public IActionResult EditarFuncionario(int id)
+        {
+            FuncionarioDTO funcionarioView = new FuncionarioDTO();
+
+            var func = database.funcionarios.Include(f => f.Gft).Include(f => f.Vaga).First(f => f.Id == id);
+
+            funcionarioView.Cargo = func.Cargo;
+            funcionarioView.InicioWA = func.InicioWA;
+            funcionarioView.TerminoWA = func.TerminoWA;
+            funcionarioView.Matricula = func.Matricula;
+            funcionarioView.Nome = func.Nome;
+            funcionarioView.GftID = func.Gft.Id;
+            funcionarioView.VagaID = func.Vaga.Id;
+
+            ViewBag.gfts = database.gfts.ToList();
+            ViewBag.vagas = database.vagas.ToList();
+
+            return View(funcionarioView);
+        }
+
         public IActionResult Vagas()
         {
             var vagas = database.vagas.ToList();

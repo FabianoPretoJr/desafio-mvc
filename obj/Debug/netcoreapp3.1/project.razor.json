@@ -14497,6 +14497,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\EditarFuncionario.cshtml",
+      "TargetPath": "Views\\Adm\\EditarFuncionario.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\FOEU\\My Private Documents\\Projetos\\desafio-mvc\\projeto\\Views\\Adm\\Historico.cshtml",
       "TargetPath": "Views\\Adm\\Historico.cshtml",
       "FileKind": "mvc"

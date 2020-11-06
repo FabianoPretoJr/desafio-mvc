@@ -183,3 +183,4 @@ C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcor
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\EditarTecnologia.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\CadastrarUnidade.cshtml.g.cs
 C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\EditarUnidade.cshtml.g.cs
+C:\Users\FOEU\My Private Documents\Projetos\desafio-mvc\projeto\obj\Debug\netcoreapp3.1\Razor\Views\Adm\EditarFuncionario.cshtml.g.cs

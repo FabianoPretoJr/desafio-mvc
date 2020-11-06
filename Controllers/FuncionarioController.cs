@@ -44,14 +44,41 @@ namespace projeto.Controllers
             }
         }
 
-        public IActionResult Atualizar()
+        public IActionResult Atualizar(FuncionarioDTO funcionarioTemporario)
         { 
-            return View();
+            if (ModelState.IsValid)
+            {
+                var funcionario = database.funcionarios.First(f => f.Id == funcionarioTemporario.Id);
+
+                funcionario.Cargo = funcionarioTemporario.Cargo;
+                funcionario.InicioWA = funcionarioTemporario.InicioWA;
+                funcionario.TerminoWA = funcionarioTemporario.TerminoWA;
+                funcionario.Nome = funcionarioTemporario.Nome;
+                funcionario.Matricula = funcionarioTemporario.Matricula;
+                funcionario.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
+                funcionario.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
+                database.SaveChanges();
+
+                return RedirectToAction("Funcionarios", "Adm");
+            }
+            else
+            {
+                            ViewBag.gfts = database.gfts.ToList();
+            ViewBag.vagas = database.vagas.ToList();
+
+                return View("../Adm/EditarFuncionario");
+            }
         }
 
-        public IActionResult Deletar()
+        public IActionResult Deletar(int id)
         {
-            return View();
+            if (id > 0)
+            {
+                var funcionario = database.funcionarios.First(f => f.Id == id);
+                database.funcionarios.Remove(funcionario);
+                database.SaveChanges();
+            }
+            return RedirectToAction("Funcionarios", "Adm");
         }
     }
 }
