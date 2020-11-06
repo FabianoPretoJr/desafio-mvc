@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace projeto.Models
 {
@@ -10,5 +11,6 @@ namespace projeto.Models
         public string DescricaoVaga { get; set; }
         public string Projeto { get; set; }
         public int QtdVaga { get; set; }
+        public ICollection<VagaTecnologia> VagaTecnologias { get; set; }
     }
 }

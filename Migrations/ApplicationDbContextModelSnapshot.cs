@@ -251,21 +251,15 @@ namespace projeto.Migrations
 
             modelBuilder.Entity("projeto.Models.FuncionarioTecnologia", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("FuncionarioID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FuncionarioId")
+                    b.Property<int>("TecnologiaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TecnologiaId")
-                        .HasColumnType("int");
+                    b.HasKey("FuncionarioID", "TecnologiaID");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuncionarioId");
-
-                    b.HasIndex("TecnologiaId");
+                    b.HasIndex("TecnologiaID");
 
                     b.ToTable("funcionariostecnologias");
                 });
@@ -341,21 +335,15 @@ namespace projeto.Migrations
 
             modelBuilder.Entity("projeto.Models.VagaTecnologia", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("VagaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TecnologiaId")
+                    b.Property<int>("TecnologiaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VagaId")
-                        .HasColumnType("int");
+                    b.HasKey("VagaID", "TecnologiaID");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("TecnologiaId");
-
-                    b.HasIndex("VagaId");
+                    b.HasIndex("TecnologiaID");
 
                     b.ToTable("vagastecnologias");
                 });
@@ -425,23 +413,31 @@ namespace projeto.Migrations
             modelBuilder.Entity("projeto.Models.FuncionarioTecnologia", b =>
                 {
                     b.HasOne("projeto.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId");
+                        .WithMany("FuncionarioTecnologias")
+                        .HasForeignKey("FuncionarioID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("projeto.Models.Tecnologia", "Tecnologia")
-                        .WithMany()
-                        .HasForeignKey("TecnologiaId");
+                        .WithMany("FuncionarioTecnologias")
+                        .HasForeignKey("TecnologiaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("projeto.Models.VagaTecnologia", b =>
                 {
                     b.HasOne("projeto.Models.Tecnologia", "Tecnologia")
-                        .WithMany()
-                        .HasForeignKey("TecnologiaId");
+                        .WithMany("VagaTecnologias")
+                        .HasForeignKey("TecnologiaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("projeto.Models.Vaga", "Vaga")
-                        .WithMany()
-                        .HasForeignKey("VagaId");
+                        .WithMany("VagaTecnologias")
+                        .HasForeignKey("VagaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

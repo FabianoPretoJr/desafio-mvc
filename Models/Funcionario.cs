@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace projeto.Models
 {
@@ -12,5 +13,6 @@ namespace projeto.Models
         public DateTime TerminoWA { get; set; }
         public Vaga Vaga { get; set; }
         public Gft Gft { get; set; }
+        public ICollection<FuncionarioTecnologia> FuncionarioTecnologias { get; set; }
     }
 }

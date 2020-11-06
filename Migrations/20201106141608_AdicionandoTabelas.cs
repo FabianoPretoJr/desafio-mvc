@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace projeto.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class AdicionandoTabelas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -212,7 +212,6 @@ namespace projeto.Migrations
                     Matricula = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
                     TerminoWA = table.Column<DateTime>(nullable: false),
-                    MyProperty = table.Column<int>(nullable: false),
                     VagaId = table.Column<int>(nullable: true),
                     GftId = table.Column<int>(nullable: true)
                 },
@@ -237,52 +236,48 @@ namespace projeto.Migrations
                 name: "vagastecnologias",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    VagaId = table.Column<int>(nullable: true),
-                    TecnologiaId = table.Column<int>(nullable: true)
+                    VagaID = table.Column<int>(nullable: false),
+                    TecnologiaID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_vagastecnologias", x => x.Id);
+                    table.PrimaryKey("PK_vagastecnologias", x => new { x.VagaID, x.TecnologiaID });
                     table.ForeignKey(
-                        name: "FK_vagastecnologias_tecnologias_TecnologiaId",
-                        column: x => x.TecnologiaId,
+                        name: "FK_vagastecnologias_tecnologias_TecnologiaID",
+                        column: x => x.TecnologiaID,
                         principalTable: "tecnologias",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_vagastecnologias_vagas_VagaId",
-                        column: x => x.VagaId,
+                        name: "FK_vagastecnologias_vagas_VagaID",
+                        column: x => x.VagaID,
                         principalTable: "vagas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "funcionariostecnologias",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    FuncionarioId = table.Column<int>(nullable: true),
-                    TecnologiaId = table.Column<int>(nullable: true)
+                    FuncionarioID = table.Column<int>(nullable: false),
+                    TecnologiaID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_funcionariostecnologias", x => x.Id);
+                    table.PrimaryKey("PK_funcionariostecnologias", x => new { x.FuncionarioID, x.TecnologiaID });
                     table.ForeignKey(
-                        name: "FK_funcionariostecnologias_funcionarios_FuncionarioId",
-                        column: x => x.FuncionarioId,
+                        name: "FK_funcionariostecnologias_funcionarios_FuncionarioID",
+                        column: x => x.FuncionarioID,
                         principalTable: "funcionarios",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_funcionariostecnologias_tecnologias_TecnologiaId",
-                        column: x => x.TecnologiaId,
+                        name: "FK_funcionariostecnologias_tecnologias_TecnologiaID",
+                        column: x => x.TecnologiaID,
                         principalTable: "tecnologias",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -333,24 +328,14 @@ namespace projeto.Migrations
                 column: "VagaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_funcionariostecnologias_FuncionarioId",
+                name: "IX_funcionariostecnologias_TecnologiaID",
                 table: "funcionariostecnologias",
-                column: "FuncionarioId");
+                column: "TecnologiaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_funcionariostecnologias_TecnologiaId",
-                table: "funcionariostecnologias",
-                column: "TecnologiaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_vagastecnologias_TecnologiaId",
+                name: "IX_vagastecnologias_TecnologiaID",
                 table: "vagastecnologias",
-                column: "TecnologiaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_vagastecnologias_VagaId",
-                table: "vagastecnologias",
-                column: "VagaId");
+                column: "TecnologiaID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
