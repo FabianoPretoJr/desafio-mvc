@@ -9,5 +9,6 @@ namespace projeto.Models
         public string Estado { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
+        public bool Status { get; set; }
     }
 }

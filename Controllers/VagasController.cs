@@ -28,6 +28,7 @@ namespace projeto.Controllers
                 v.QtdVaga = vagaTemporaria.QtdVaga;
                 v.AberturaVaga = vagaTemporaria.AberturaVaga;
                 v.DescricaoVaga = vagaTemporaria.DescricaoVaga;
+                v.Status = true;
 
                 database.vagas.Add(v);
                 database.SaveChanges();
@@ -70,7 +71,7 @@ namespace projeto.Controllers
             if (id > 0)
             {
                 var vaga = database.vagas.First(v => v.Id == id);
-                database.vagas.Remove(vaga);
+                vaga.Status = false;
                 database.SaveChanges();
             }
             return RedirectToAction("Vagas", "Adm");

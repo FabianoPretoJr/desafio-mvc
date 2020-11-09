@@ -29,6 +29,7 @@ namespace projeto.Controllers
                 unidade.Estado = unidadeTemporaria.Estado;
                 unidade.Nome = unidadeTemporaria.Nome;
                 unidade.Telefone = unidadeTemporaria.Telefone;
+                unidade.Status = true;
 
                 database.gfts.Add(unidade);
                 database.SaveChanges();
@@ -69,7 +70,7 @@ namespace projeto.Controllers
             if (id > 0)
             {
                 var unidade = database.gfts.First(u => u.Id == id);
-                database.gfts.Remove(unidade);
+                unidade.Status = false;
                 database.SaveChanges();
             }
 

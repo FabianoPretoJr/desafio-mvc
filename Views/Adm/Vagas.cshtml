@@ -4,6 +4,15 @@
     Layout = "_Layout";
 }
 
+<style>
+    .descricao {
+        white-space: wrap;
+        width: 30%;                   
+        overflow: hidden;
+        text-overflow: clip ellipsis;
+    }
+</style>
+
 <div>
     <h2>Vagas</h2><br/>
     <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarVaga">Cadastrar vaga</a>
@@ -52,7 +61,7 @@
                     <td>@vagas.Projeto</td>
                     <td>@vagas.QtdVaga</td>
                     <td>@vagas.AberturaVaga</td>
-                    <td>@vagas.DescricaoVaga</td>
+                    <td class="descricao">@vagas.DescricaoVaga</td>
                     <td>
                         <a class="btn btn-primary" href="/Adm/EditarVaga/@vagas.Id">Editar</a> 
                         <form asp-action="Deletar" asp-controller="Vagas" style="display: inline;">

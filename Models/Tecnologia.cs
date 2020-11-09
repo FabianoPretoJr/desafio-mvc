@@ -8,5 +8,6 @@ namespace projeto.Models
         public string Nome { get; set; }
         public ICollection<FuncionarioTecnologia> FuncionarioTecnologias { get; set; }
         public ICollection<VagaTecnologia> VagaTecnologias { get; set; }
+        public bool Status { get; set; }
     }
 }

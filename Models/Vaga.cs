@@ -12,5 +12,6 @@ namespace projeto.Models
         public string Projeto { get; set; }
         public int QtdVaga { get; set; }
         public ICollection<VagaTecnologia> VagaTecnologias { get; set; }
+        public bool Status { get; set; }
     }
 }

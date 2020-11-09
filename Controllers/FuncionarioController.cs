@@ -29,6 +29,7 @@ namespace projeto.Controllers
                 func.Nome = funcionarioTemporario.Nome;
                 func.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
                 func.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
+                func.Status = true;
 
                 database.funcionarios.Add(func);
                 database.SaveChanges();
@@ -75,7 +76,7 @@ namespace projeto.Controllers
             if (id > 0)
             {
                 var funcionario = database.funcionarios.First(f => f.Id == id);
-                database.funcionarios.Remove(funcionario);
+                funcionario.Status = false;
                 database.SaveChanges();
             }
             return RedirectToAction("Funcionarios", "Adm");

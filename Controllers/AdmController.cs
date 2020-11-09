@@ -23,15 +23,15 @@ namespace projeto.Controllers
 
         public IActionResult Funcionarios()
         {
-            var func = database.funcionarios.Include(f => f.Vaga).Include(f => f.Gft).ToList();
+            var func = database.funcionarios.Include(f => f.Vaga).Include(f => f.Gft).Where(f => f.Status == true).ToList();
 
             return View(func);
         }
 
         public IActionResult CadastrarFuncionario()
         {
-            ViewBag.gfts = database.gfts.ToList();
-            ViewBag.vagas = database.vagas.ToList();
+            ViewBag.gfts = database.gfts.Where(g => g.Status == true).ToList();
+            ViewBag.vagas = database.vagas.Where(v => v.Status == true).ToList();
 
             return View();
         }
@@ -58,7 +58,7 @@ namespace projeto.Controllers
 
         public IActionResult Vagas()
         {
-            var vagas = database.vagas.ToList();
+            var vagas = database.vagas.Where(v => v.Status == true).ToList();
             return View(vagas);
         }
 
@@ -95,7 +95,7 @@ namespace projeto.Controllers
 
         public IActionResult Tecnologia()
         {
-            var tecnologias = database.tecnologias.ToList();
+            var tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
 
             return View(tecnologias);
         }
@@ -118,7 +118,7 @@ namespace projeto.Controllers
 
         public IActionResult Unidades()
         {
-            var unidades = database.gfts.ToList();
+            var unidades = database.gfts.Where(u => u.Status == true).ToList();
 
             return View(unidades);
         }

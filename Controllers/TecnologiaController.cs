@@ -23,6 +23,7 @@ namespace projeto.Controllers
             {
                 Tecnologia tecnologia = new Tecnologia();
                 tecnologia.Nome = tecnologiaTemporaria.Nome;
+                tecnologia.Status = true;
 
                 database.tecnologias.Add(tecnologia);
                 database.SaveChanges();
@@ -58,7 +59,7 @@ namespace projeto.Controllers
             if(id > 0)
             {
                 var tecnologia = database.tecnologias.First(t => t.Id == id);
-                database.tecnologias.Remove(tecnologia);
+                tecnologia.Status = false;
                 database.SaveChanges();
             }
             return RedirectToAction("Tecnologia", "Adm");
