@@ -1,4 +1,7 @@
 @model IEnumerable<projeto.Models.Vaga>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Vagas";
     Layout = "_Layout";
@@ -49,7 +52,10 @@
             <th>Qtd vagas</th>
             <th>Data de abertura</th>
             <th>Descrição</th>
-            <th>Ações</th>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <th>Ações</th>
+            }
         </tr>
     </thead>
         <tbody>
@@ -62,13 +68,16 @@
                     <td>@vagas.QtdVaga</td>
                     <td>@vagas.AberturaVaga</td>
                     <td class="descricao">@vagas.DescricaoVaga</td>
-                    <td>
-                        <a class="btn btn-primary" href="/Adm/EditarVaga/@vagas.Id">Editar</a> 
-                        <form asp-action="Deletar" asp-controller="Vagas" style="display: inline;">
-                            <input type="hidden" name="id" id="id" value="@vagas.Id"> @*Muito importante que name e id sejam iguais *@
-                            <button class="btn btn-danger">Deletar</button>
-                        </form>
-                    </td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <td>
+                            <a class="btn btn-primary" href="/Adm/EditarVaga/@vagas.Id">Editar</a> 
+                            <form asp-action="Deletar" asp-controller="Vagas" style="display: inline;">
+                                <input type="hidden" name="id" id="id" value="@vagas.Id"> @*Muito importante que name e id sejam iguais *@
+                                <button class="btn btn-danger">Deletar</button>
+                            </form>
+                        </td>
+                    }
                 </tr>                
             }
         </tbody>
