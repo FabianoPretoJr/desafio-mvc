@@ -63,8 +63,8 @@ namespace projeto.Controllers
             }
             else
             {
-                            ViewBag.gfts = database.gfts.ToList();
-            ViewBag.vagas = database.vagas.ToList();
+                ViewBag.gfts = database.gfts.ToList();
+                ViewBag.vagas = database.vagas.ToList();
 
                 return View("../Adm/EditarFuncionario");
             }
@@ -79,6 +79,13 @@ namespace projeto.Controllers
                 database.SaveChanges();
             }
             return RedirectToAction("Funcionarios", "Adm");
+        }
+
+        public IActionResult Teste()
+        {
+            ViewBag.gfts = database.gfts.ToList();
+            var unidades = database.gfts.ToList();
+            return Json(unidades);
         }
     }
 }

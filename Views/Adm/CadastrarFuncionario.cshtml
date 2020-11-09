@@ -3,6 +3,17 @@
     ViewData["Title"] = "Cad Funcionários";
 }
 
+@* <style>
+    .button-plus {
+        padding: 10px;
+        background-color: #1b6ec2;
+        border-color: #1861ac;
+        cursor: pointer;
+        border-radius: 4px;
+        margin: 20px;
+    }
+</style> *@
+
 <h3>Novo funcionário</h3>
 <hr/>
 
@@ -35,7 +46,13 @@
 
     <label>Vaga</label>
     <select class="form-control" asp-for="VagaID" asp-items='@(new SelectList(@ViewBag.vagas, "Id", "CodVaga"))'></select>
-    <span asp-validation-for="VagaID"></span><br/>
+    <span asp-validation-for="VagaID"></span><br/><br/>
+
+    @* <a class="button-plus" id="tecnologia">+ tecnologia</a><br/><br/>
+
+    <div id="render">
+
+    </div> *@
 
     <button class="btn btn-success">Cadastrar funcionário</button>
 </form>

@@ -9,6 +9,27 @@
     <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarTecnologia">Cadastrar tecnologia</a>
 </div>
 
+<script>
+    $(document).ready( function () {
+        $('#tecnologias').DataTable({
+            //"info" : false,
+            "language" : {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "Desculpe, nada encontrado",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "próximo",
+                    "previous": "Anterior"
+                }
+            }
+        });
+    } );
+</script>
+
 <hr/>
 <table id="tecnologias" class="table table-striped table-bordered">
     <thead>
