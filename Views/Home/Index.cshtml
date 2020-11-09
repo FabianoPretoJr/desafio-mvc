@@ -1,8 +1,19 @@
-﻿@{
+﻿@model projeto.Models.Popular;
+@{
     ViewData["Title"] = "Home";
 }
 
-<div class="">
+<div>
     <h2>Gerenciador de funcionários em WA.</h2><br/>
-    <button class="btn btn-success">Popular banco de dados com Logins</button>
+
+    @if ((bool)ViewData["cont1"])
+    {
+        <a class="btn btn-success" asp-controller="Popular" asp-action="PopularLogin">Popular banco de dados com Logins</a><br/><br/>
+    }
+    else
+    {
+        <h4>Banco de dados populado com sucesso!</h4>
+        <h5>E-mail: fabiano@gft.com</h5>
+        <h5>Senha: Biano15;-;</h5>
+    }
 </div>

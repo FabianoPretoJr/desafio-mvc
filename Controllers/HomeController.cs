@@ -6,25 +6,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using projeto.Models;
+using projeto.Data;
 
 namespace projeto.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext database;
+        public HomeController(ApplicationDbContext database)
         {
-            _logger = logger;
+            this.database = database;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var login = database.popular.Where(p => p.ClaimCont == "Login" && p.ValueCont == true).ToList();
 
-        public IActionResult Privacy()
-        {
+            if(login.Any())
+            {
+                ViewData["cont1"] = false;
+            }
+            else
+            {
+                ViewData["cont1"] = true;
+            }
             return View();
         }
 
