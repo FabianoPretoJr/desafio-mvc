@@ -4,5 +4,13 @@
 
 <div>
     <h2>Gerenciador de funcionários em WA.</h2><br/>
-    <a class="btn btn-success" asp-action="PopularLogin" asp-controller="Popular">Popular banco de dados com informações</a>
+    
+    @if ((bool)ViewData["cont2"])
+    {
+        <a class="btn btn-success" asp-action="PopularDados" asp-controller="Popular">Popular banco de dados com informações</a>
+    }
+    else
+    {
+        <h4>Dados populados com sucesso!</h4>
+    }
 </div>

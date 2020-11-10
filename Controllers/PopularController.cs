@@ -59,5 +59,61 @@ namespace projeto.Controllers
             
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult PopularDados()
+        {
+            Vaga vaga = new Vaga();
+
+            vaga.CodVaga = "#ITABANK";
+            vaga.Projeto = "Itaú Unibanco";
+            vaga.QtdVaga = 10;
+            vaga.AberturaVaga = DateTime.Now;
+            vaga.DescricaoVaga = "Vagas para desenvolvedor backend .NET";
+            vaga.Status = true;
+            database.vagas.Add(vaga);
+            database.SaveChanges();
+
+            Tecnologia tec = new Tecnologia();
+
+            tec.Nome = ".NET";
+            tec.Status = true;
+            database.tecnologias.Add(tec);
+            database.SaveChanges();
+
+            Gft unidade = new Gft();
+
+            unidade.Cep = "07844-170";
+            unidade.Cidade = "São Paulo";
+            unidade.Endereco = "Alameda Rio Negro, 266";
+            unidade.Estado = "SP";
+            unidade.Nome = "Alphaville";
+            unidade.Telefone = "11 4444-5612";
+            unidade.Status = true;
+            database.gfts.Add(unidade);
+            database.SaveChanges();
+
+            Funcionario func = new Funcionario();
+
+            func.Cargo = "Desenvolvedor backend .NET";
+            func.InicioWA = DateTime.Now;
+            func.Matricula = "1545884";
+            func.Nome = "Fabiano Preto";
+            func.TerminoWA = DateTime.Now.AddDays(15);
+            func.Gft = database.gfts.First(g => g.Id == 4);
+            func.Vaga = database.vagas.First(v => v.Id == 5);
+            func.Status = true;
+            database.funcionarios.Add(func);
+            database.SaveChanges();
+
+            Popular pop = new Popular();
+
+            pop.ClaimCont = "Dados";
+            pop.ValueCont = true;
+
+            database.popular.Add(pop);
+            database.SaveChanges();
+
+            return RedirectToAction("Index", "Adm");
+        }
     }
 }

@@ -18,6 +18,16 @@ namespace projeto.Controllers
 
         public IActionResult Index()
         {
+            var login = database.popular.Where(p => p.ClaimCont == "Dados" && p.ValueCont == true).ToList();
+
+            if(login.Any())
+            {
+                ViewData["cont2"] = false;
+            }
+            else
+            {
+                ViewData["cont2"] = true;
+            }
             return View();
         }
 
