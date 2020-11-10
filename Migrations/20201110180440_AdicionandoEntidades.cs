@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace projeto.Migrations
 {
-    public partial class AdicionandoTabelas : Migration
+    public partial class AdicionandoEntidades : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,11 +58,26 @@ namespace projeto.Migrations
                     Endereco = table.Column<string>(nullable: true),
                     Estado = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true)
+                    Telefone = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_gfts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "popular",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ClaimCont = table.Column<string>(nullable: true),
+                    ValueCont = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_popular", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,7 +86,8 @@ namespace projeto.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(nullable: true),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -88,7 +104,8 @@ namespace projeto.Migrations
                     CodVaga = table.Column<string>(nullable: true),
                     DescricaoVaga = table.Column<string>(nullable: true),
                     Projeto = table.Column<string>(nullable: true),
-                    QtdVaga = table.Column<int>(nullable: false)
+                    QtdVaga = table.Column<int>(nullable: false),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -213,7 +230,8 @@ namespace projeto.Migrations
                     Nome = table.Column<string>(nullable: true),
                     TerminoWA = table.Column<DateTime>(nullable: false),
                     VagaId = table.Column<int>(nullable: true),
-                    GftId = table.Column<int>(nullable: true)
+                    GftId = table.Column<int>(nullable: true),
+                    Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -357,6 +375,9 @@ namespace projeto.Migrations
 
             migrationBuilder.DropTable(
                 name: "funcionariostecnologias");
+
+            migrationBuilder.DropTable(
+                name: "popular");
 
             migrationBuilder.DropTable(
                 name: "vagastecnologias");

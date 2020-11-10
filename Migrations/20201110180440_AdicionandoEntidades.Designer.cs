@@ -9,8 +9,8 @@ using projeto.Data;
 namespace projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201109132555_AdicionandoDelecaoBooleana")]
-    partial class AdicionandoDelecaoBooleana
+    [Migration("20201110180440_AdicionandoEntidades")]
+    partial class AdicionandoEntidades
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -299,6 +299,23 @@ namespace projeto.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("gfts");
+                });
+
+            modelBuilder.Entity("projeto.Models.Popular", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClaimCont")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("ValueCont")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("popular");
                 });
 
             modelBuilder.Entity("projeto.Models.Tecnologia", b =>
