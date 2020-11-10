@@ -41,7 +41,8 @@
             <th>Estado</th>
             <th>Nome</th>
             <th>Telefone</th>
-            <th>Ações</th>
+            <th>Editar</th>
+            <th>Deletar</th>
         </tr>
     </thead>
         <tbody>
@@ -57,6 +58,8 @@
                     <td>@gft.Telefone</td>
                     <td>
                         <a class="btn btn-primary" href="/Adm/EditarUnidade/@gft.Id">Editar</a> 
+                    </td>
+                    <td>
                         <form asp-action="Deletar" asp-controller="Unidade" style="display: inline;">
                             <input type="hidden" name="id" id="id" value="@gft.Id">
                             <button class="btn btn-danger">Deletar</button>

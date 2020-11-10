@@ -36,7 +36,8 @@
         <tr>
             <th>Id</th>
             <th>Nome</th>
-            <th>Ações</th>
+            <th>Editar</th>
+            <th>Deletar</th>
         </tr>
     </thead>
         <tbody>
@@ -47,6 +48,8 @@
                     <td>@tecnologias.Nome</td>
                     <td>
                         <a class="btn btn-primary" href="/Adm/EditarTecnologia/@tecnologias.Id">Editar</a> 
+                    </td>
+                    <td>
                         <form asp-action="Deletar" asp-controller="Tecnologia" style="display: inline;">
                             <input type="hidden" name="id" id="id" value="@tecnologias.Id">
                             <button class="btn btn-danger">Deletar</button>

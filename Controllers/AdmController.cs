@@ -33,8 +33,7 @@ namespace projeto.Controllers
 
         public IActionResult Funcionarios()
         {
-            var func = database.funcionarios.Include(f => f.Gft).Where(f => f.Status == true).ToList();
-
+            var func = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Status == true).ToList();
             return View(func);
         }
 
@@ -69,7 +68,7 @@ namespace projeto.Controllers
 
         public IActionResult Vagas()
         {
-            var vagas = database.vagas.Where(v => v.Status == true).ToList();
+            var vagas = database.vagas.Include(v => v.VagaTecnologias).ThenInclude(v => v.Tecnologia).Where(v => v.Status == true).ToList();
             return View(vagas);
         }
 

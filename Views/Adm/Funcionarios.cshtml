@@ -54,11 +54,13 @@
             <th>Matricula</th>
             <th>Nome</th>
             <th>Termino WA</th>
+            <th>Tecnologias</th>
             @* <th>Vaga</th> *@
             <th>GFT</th>
             @if (SignInManager.IsSignedIn(User))
             {
-                <th>Ações</th>
+                <th>Editar</th>
+                <th>Deletar</th>
             }
         </tr>
     </thead>
@@ -72,17 +74,23 @@
                     <td>@func.Matricula</td>
                     <td>@func.Nome</td>
                     <td>@func.TerminoWA</td>
+                    @foreach (var tecnologia in func.FuncionarioTecnologias.Select(f => f.Tecnologia))
+                    {
+                        <td>@tecnologia.Nome</td>
+                    }
                     @* <td>@func.Vaga.CodVaga</td> *@
                     <td>@func.Gft.Nome</td>
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <td>
-                        <a class="btn btn-primary" href="/Adm/EditarFuncionario/@func.Id">Editar</a> 
-                        <form asp-action="Deletar" asp-controller="Funcionario" style="display: inline;">
-                            <input type="hidden" name="id" id="id" value="@func.Id"> @*Muito importante que name e id sejam iguais *@
-                            <button class="btn btn-danger">Deletar</button>
-                        </form>
-                    </td>
+                            <a class="btn btn-primary" href="/Adm/EditarFuncionario/@func.Id">Editar</a> 
+                        </td>
+                        <td>
+                            <form asp-action="Deletar" asp-controller="Funcionario" style="display: inline;">
+                                <input type="hidden" name="id" id="id" value="@func.Id"> @*Muito importante que name e id sejam iguais *@
+                                <button class="btn btn-danger">Deletar</button>
+                            </form>
+                        </td>
                     }
                 </tr>                
             }
