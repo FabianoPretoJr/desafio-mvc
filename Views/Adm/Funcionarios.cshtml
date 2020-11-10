@@ -27,6 +27,15 @@
     } );
 </script>
 
+<style>
+    .cargo {
+        white-space: wrap;
+        width: 15%;                   
+        overflow: hidden;
+        text-overflow: clip ellipsis;
+    }
+</style>
+
 @if(SignInManager.IsSignedIn(User))
 {
     <div>
@@ -45,7 +54,7 @@
             <th>Matricula</th>
             <th>Nome</th>
             <th>Termino WA</th>
-            <th>Vaga</th>
+            @* <th>Vaga</th> *@
             <th>GFT</th>
             @if (SignInManager.IsSignedIn(User))
             {
@@ -58,12 +67,12 @@
             {
                 <tr>
                     <td>@func.Id</td>
-                    <td>@func.Cargo</td>
+                    <td class="cargo">@func.Cargo</td>
                     <td>@func.InicioWA</td>
                     <td>@func.Matricula</td>
                     <td>@func.Nome</td>
                     <td>@func.TerminoWA</td>
-                    <td>@func.Vaga.CodVaga</td>
+                    @* <td>@func.Vaga.CodVaga</td> *@
                     <td>@func.Gft.Nome</td>
                     @if (SignInManager.IsSignedIn(User))
                     {

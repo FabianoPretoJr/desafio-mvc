@@ -28,7 +28,7 @@ namespace projeto.Controllers
                 func.TerminoWA = funcionarioTemporario.TerminoWA;
                 func.Nome = funcionarioTemporario.Nome;
                 func.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
-                func.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
+                // func.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
                 func.Status = true;
 
                 database.funcionarios.Add(func);
@@ -56,7 +56,7 @@ namespace projeto.Controllers
                 funcionario.TerminoWA = funcionarioTemporario.TerminoWA;
                 funcionario.Nome = funcionarioTemporario.Nome;
                 funcionario.Matricula = funcionarioTemporario.Matricula;
-                funcionario.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
+                // funcionario.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
                 funcionario.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
                 database.SaveChanges();
 

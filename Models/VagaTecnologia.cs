@@ -5,6 +5,6 @@ namespace projeto.Models
         public int VagaID { get; set; }
         public Vaga Vaga { get; set; }
         public int TecnologiaID { get; set; }
-        public Tecnologia Tecnologia { get; set; }
+        public Tecnologia Tecnologia { get; set; } // ADICIONA AQUI
     }
 }

@@ -44,9 +44,9 @@
     <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))'></select>
     <span asp-validation-for="GftID"></span><br/>
 
-    <label>Vaga</label>
+    @* <label>Vaga</label>
     <select class="form-control" asp-for="VagaID" asp-items='@(new SelectList(@ViewBag.vagas, "Id", "CodVaga"))'></select>
-    <span asp-validation-for="VagaID"></span><br/>
+    <span asp-validation-for="VagaID"></span><br/> *@
 
     @* <a class="button-plus" id="tecnologia">+ tecnologia</a><br/><br/>
 

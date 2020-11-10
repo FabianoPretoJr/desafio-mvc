@@ -33,6 +33,14 @@ namespace projeto.Controllers
                 database.vagas.Add(v);
                 database.SaveChanges();
 
+                VagaTecnologia vt = new VagaTecnologia();
+
+                vt.Vaga = database.vagas.First(vaga => vaga.Id == v.Id);
+                vt.Tecnologia = database.tecnologias.First(t => t.Id == vagaTemporaria.TecnologiaID);
+                
+                database.vagastecnologias.Add(vt);
+                database.SaveChanges();
+
                 return RedirectToAction("Vagas", "Adm");
             }
             else

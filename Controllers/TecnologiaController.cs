@@ -22,6 +22,7 @@ namespace projeto.Controllers
             if (ModelState.IsValid)
             {
                 Tecnologia tecnologia = new Tecnologia();
+                tecnologia.Id = tecnologiaTemporaria.Id;
                 tecnologia.Nome = tecnologiaTemporaria.Nome;
                 tecnologia.Status = true;
 
