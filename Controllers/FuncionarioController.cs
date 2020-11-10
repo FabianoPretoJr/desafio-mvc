@@ -34,6 +34,14 @@ namespace projeto.Controllers
                 database.funcionarios.Add(func);
                 database.SaveChanges();
 
+                FuncionarioTecnologia ft = new FuncionarioTecnologia();
+
+                ft.Funcionario = database.funcionarios.First(f => f.Id == func.Id);
+                ft.Tecnologia = database.tecnologias.First(t => t.Id == funcionarioTemporario.TecnologiaID);
+                
+                database.funcionariostecnologias.Add(ft);
+                database.SaveChanges();
+
                 return RedirectToAction("Funcionarios", "Adm");
             }
             else

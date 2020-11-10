@@ -40,6 +40,7 @@ namespace projeto.Controllers
 
         public IActionResult CadastrarFuncionario()
         {
+            ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
             ViewBag.gfts = database.gfts.Where(g => g.Status == true).ToList();
             // ViewBag.vagas = database.vagas.Where(v => v.Status == true).ToList();
 
@@ -61,7 +62,7 @@ namespace projeto.Controllers
             // funcionarioView.VagaID = func.Vaga.Id;
 
             ViewBag.gfts = database.gfts.ToList();
-            ViewBag.vagas = database.vagas.ToList();
+            // ViewBag.vagas = database.vagas.ToList();
 
             return View(funcionarioView);
         }
