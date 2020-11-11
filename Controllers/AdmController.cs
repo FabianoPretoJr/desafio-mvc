@@ -103,13 +103,16 @@ namespace projeto.Controllers
         [Authorize]
         public IActionResult Alocacao()
         {
+            ViewBag.funcionario = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Vaga == null && f.Status == true).ToList();
+            ViewBag.vaga = database.vagas.Include(v => v.VagaTecnologias).ThenInclude(v => v.Tecnologia).Where(v => v.QtdVaga > 0 && v.Status == true).ToList();
             return View();
         }
 
         [Authorize]
         public IActionResult Historico()
         {
-            return View();
+            var func = database.funcionarios.Include(f => f.Vaga).Where(f => f.Vaga != null).ToList();
+            return View(func);
         }
 
         [Authorize]

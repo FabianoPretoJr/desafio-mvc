@@ -95,6 +95,16 @@ namespace projeto.Controllers
             return RedirectToAction("Funcionarios", "Adm");
         }
 
+        [HttpPost]
+        public IActionResult AdcVaga(AlocacaoDTO alocacaoTemporaria)
+        {
+            var func = database.funcionarios.First(f => f.Id == alocacaoTemporaria.FuncionarioID);
+            func.Vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
+            database.SaveChanges();
+
+            return RedirectToAction("Alocacao", "Adm");
+        }
+
         public IActionResult Teste()
         {
             ViewBag.gfts = database.gfts.ToList();

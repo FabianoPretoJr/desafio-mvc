@@ -70,14 +70,16 @@
                 <tr>
                     <td>@func.Id</td>
                     <td class="cargo">@func.Cargo</td>
-                    <td>@func.InicioWA</td>
+                    <td>@func.InicioWA.ToString("dd/MM/yyyy")</td>
                     <td>@func.Matricula</td>
                     <td>@func.Nome</td>
-                    <td>@func.TerminoWA</td>
+                    <td>@func.TerminoWA.ToString("dd/MM/yyyy")</td>
+                    <td>
                     @foreach (var tecnologia in func.FuncionarioTecnologias.Select(f => f.Tecnologia))
                     {
-                        <td>@tecnologia.Nome</td>
+                        @tecnologia.Nome
                     }
+                    </td>
                     @* <td>@func.Vaga.CodVaga</td> *@
                     <td>@func.Gft.Nome</td>
                     @if (SignInManager.IsSignedIn(User))

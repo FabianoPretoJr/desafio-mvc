@@ -1,5 +1,18 @@
+@model projeto.DTO.AlocacaoDTO
 @{
     ViewData["Title"] = "Alocação";
 }
 
 <h2>Alocação</h2>
+
+<form method="POST" asp-controller="Funcionario" asp-action="AdcVaga">
+    <label>Funcionário</label>
+    <select class="form-control" asp-for="FuncionarioID" asp-items='@(new SelectList(@ViewBag.funcionario, "Id", "Nome"))'></select>
+    <br/>
+
+    <label>vaga</label>
+    <select class="form-control" asp-for="VagaID" asp-items='@(new SelectList(@ViewBag.vaga, "Id", "Projeto"))'></select>
+    <br/>
+
+    <button class="btn btn-success">Cadastrar tecnologia</button>
+</form>

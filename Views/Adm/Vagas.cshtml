@@ -71,12 +71,14 @@
                     <td>@vagas.CodVaga</td>
                     <td>@vagas.Projeto</td>
                     <td>@vagas.QtdVaga</td>
-                    <td>@vagas.AberturaVaga</td>
+                    <td>@vagas.AberturaVaga.ToString("dd/MM/yyyy")</td>
                     <td class="descricao">@vagas.DescricaoVaga</td>
+                    <td>
                     @foreach (var tecnologia in vagas.VagaTecnologias.Select(v => v.Tecnologia))
                     {
-                        <td>@tecnologia.Nome</td>
+                        @tecnologia.Nome
                     }
+                    </td>
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <td>

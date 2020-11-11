@@ -9,6 +9,15 @@
     <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarUnidade">Cadastrar unidades</a>
 </div>
 
+<style>
+    .endereco {
+        white-space: wrap;
+        width: 20%;                   
+        overflow: hidden;
+        text-overflow: clip ellipsis;
+    }
+</style>
+
 <script>
     $(document).ready( function () {
         $('#unidades').DataTable({
@@ -52,7 +61,7 @@
                     <td>@gft.Id</td>
                     <td>@gft.Cep</td>
                     <td>@gft.Cidade</td>
-                    <td>@gft.Endereco</td>
+                    <td class="endereco">@gft.Endereco</td>
                     <td>@gft.Estado</td>
                     <td>@gft.Nome</td>
                     <td>@gft.Telefone</td>
