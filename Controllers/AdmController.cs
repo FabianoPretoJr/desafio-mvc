@@ -53,7 +53,7 @@ namespace projeto.Controllers
         {
             FuncionarioDTO funcionarioView = new FuncionarioDTO();
 
-            var func = database.funcionarios.Include(f => f.Gft).First(f => f.Id == id);
+            var func = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).First(f => f.Id == id);
 
             funcionarioView.Cargo = func.Cargo;
             funcionarioView.InicioWA = func.InicioWA;
@@ -61,8 +61,11 @@ namespace projeto.Controllers
             funcionarioView.Matricula = func.Matricula;
             funcionarioView.Nome = func.Nome;
             funcionarioView.GftID = func.Gft.Id;
+            var funtec = database.funcionariostecnologias.First(ft => ft.FuncionarioID == func.Id);
+            funcionarioView.TecnologiaID = funtec.TecnologiaID;
 
             ViewBag.gfts = database.gfts.ToList();
+            ViewBag.tecnologias = database.tecnologias.ToList();
 
             return View(funcionarioView);
         }

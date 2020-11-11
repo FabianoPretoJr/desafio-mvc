@@ -68,6 +68,15 @@ namespace projeto.Controllers
                 funcionario.Nome = funcionarioTemporario.Nome;
                 funcionario.Matricula = funcionarioTemporario.Matricula;
                 funcionario.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
+                var funtec = database.funcionariostecnologias.First(ft => ft.FuncionarioID == funcionarioTemporario.Id);
+                database.funcionariostecnologias.Remove(funtec);
+                database.SaveChanges();
+
+                FuncionarioTecnologia ft = new FuncionarioTecnologia();
+
+                ft.Funcionario = database.funcionarios.First(f => f.Id == funcionarioTemporario.Id);
+                ft.Tecnologia = database.tecnologias.First(t => t.Id == funcionarioTemporario.TecnologiaID);
+                database.funcionariostecnologias.Add(ft);
                 database.SaveChanges();
 
                 return RedirectToAction("Funcionarios", "Adm");
