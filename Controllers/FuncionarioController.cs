@@ -31,7 +31,6 @@ namespace projeto.Controllers
                 func.TerminoWA = funcionarioTemporario.TerminoWA;
                 func.Nome = funcionarioTemporario.Nome;
                 func.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
-                // func.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
                 func.Status = true;
 
                 database.funcionarios.Add(func);
@@ -68,7 +67,6 @@ namespace projeto.Controllers
                 funcionario.TerminoWA = funcionarioTemporario.TerminoWA;
                 funcionario.Nome = funcionarioTemporario.Nome;
                 funcionario.Matricula = funcionarioTemporario.Matricula;
-                // funcionario.Vaga = database.vagas.First(v => v.Id == funcionarioTemporario.VagaID);
                 funcionario.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
                 database.SaveChanges();
 
@@ -98,8 +96,16 @@ namespace projeto.Controllers
         [HttpPost]
         public IActionResult AdcVaga(AlocacaoDTO alocacaoTemporaria)
         {
+            Alocacao alo = new Alocacao();
+
+            alo.Id = alocacaoTemporaria.Id;
+            alo.InicioAlocacao = DateTime.Now;
+            alo.Vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
+            database.alocacoes.Add(alo);
+            database.SaveChanges();
+
             var func = database.funcionarios.First(f => f.Id == alocacaoTemporaria.FuncionarioID);
-            func.Vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
+            func.Alocacao = database.alocacoes.First(a => a.Id == alo.Id);
             database.SaveChanges();
 
             return RedirectToAction("Alocacao", "Adm");

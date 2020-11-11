@@ -6,11 +6,13 @@
 <h2>Alocação</h2>
 
 <form method="POST" asp-controller="Funcionario" asp-action="AdcVaga">
+    <input type="hidden" asp-for="Id" value="0">
+
     <label>Funcionário</label>
     <select class="form-control" asp-for="FuncionarioID" asp-items='@(new SelectList(@ViewBag.funcionario, "Id", "Nome"))'></select>
     <br/>
 
-    <label>vaga</label>
+    <label>Vaga</label>
     <select class="form-control" asp-for="VagaID" asp-items='@(new SelectList(@ViewBag.vaga, "Id", "Projeto"))'></select>
     <br/>
 

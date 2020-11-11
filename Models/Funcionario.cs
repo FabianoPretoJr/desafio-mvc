@@ -11,7 +11,7 @@ namespace projeto.Models
         public string Matricula { get; set; }
         public string Nome { get; set; }
         public DateTime TerminoWA { get; set; }
-        public Vaga Vaga { get; set; }
+        public Alocacao Alocacao { get; set; }
         public Gft Gft { get; set; }
         public ICollection<FuncionarioTecnologia> FuncionarioTecnologias { get; set; }
         public bool Status { get; set; }

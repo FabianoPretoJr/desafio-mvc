@@ -16,6 +16,7 @@ namespace projeto.Data
         public DbSet<FuncionarioTecnologia> funcionariostecnologias { get; set; }
         public DbSet<VagaTecnologia> vagastecnologias { get; set; }
         public DbSet<Popular> popular { get; set; }
+        public DbSet<Alocacao> alocacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

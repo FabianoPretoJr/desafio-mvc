@@ -219,31 +219,19 @@ namespace projeto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "funcionarios",
+                name: "alocacoes",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Cargo = table.Column<string>(nullable: true),
-                    InicioWA = table.Column<DateTime>(nullable: false),
-                    Matricula = table.Column<string>(nullable: true),
-                    Nome = table.Column<string>(nullable: true),
-                    TerminoWA = table.Column<DateTime>(nullable: false),
                     VagaId = table.Column<int>(nullable: true),
-                    GftId = table.Column<int>(nullable: true),
-                    Status = table.Column<bool>(nullable: false)
+                    InicioAlocacao = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_funcionarios", x => x.Id);
+                    table.PrimaryKey("PK_alocacoes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_funcionarios_gfts_GftId",
-                        column: x => x.GftId,
-                        principalTable: "gfts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_funcionarios_vagas_VagaId",
+                        name: "FK_alocacoes_vagas_VagaId",
                         column: x => x.VagaId,
                         principalTable: "vagas",
                         principalColumn: "Id",
@@ -275,6 +263,38 @@ namespace projeto.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "funcionarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cargo = table.Column<string>(nullable: true),
+                    InicioWA = table.Column<DateTime>(nullable: false),
+                    Matricula = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(nullable: true),
+                    TerminoWA = table.Column<DateTime>(nullable: false),
+                    AlocacaoId = table.Column<int>(nullable: true),
+                    GftId = table.Column<int>(nullable: true),
+                    Status = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_funcionarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_funcionarios_alocacoes_AlocacaoId",
+                        column: x => x.AlocacaoId,
+                        principalTable: "alocacoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_funcionarios_gfts_GftId",
+                        column: x => x.GftId,
+                        principalTable: "gfts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "funcionariostecnologias",
                 columns: table => new
                 {
@@ -297,6 +317,11 @@ namespace projeto.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_alocacoes_VagaId",
+                table: "alocacoes",
+                column: "VagaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -336,14 +361,14 @@ namespace projeto.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_funcionarios_AlocacaoId",
+                table: "funcionarios",
+                column: "AlocacaoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_funcionarios_GftId",
                 table: "funcionarios",
                 column: "GftId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_funcionarios_VagaId",
-                table: "funcionarios",
-                column: "VagaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_funcionariostecnologias_TecnologiaID",
@@ -393,6 +418,9 @@ namespace projeto.Migrations
 
             migrationBuilder.DropTable(
                 name: "tecnologias");
+
+            migrationBuilder.DropTable(
+                name: "alocacoes");
 
             migrationBuilder.DropTable(
                 name: "gfts");

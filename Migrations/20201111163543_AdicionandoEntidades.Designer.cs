@@ -9,7 +9,7 @@ using projeto.Data;
 namespace projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201111125307_AdicionandoEntidades")]
+    [Migration("20201111163543_AdicionandoEntidades")]
     partial class AdicionandoEntidades
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -215,10 +215,32 @@ namespace projeto.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("projeto.Models.Alocacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InicioAlocacao")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("VagaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VagaId");
+
+                    b.ToTable("alocacoes");
+                });
+
             modelBuilder.Entity("projeto.Models.Funcionario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AlocacaoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Cargo")
@@ -242,14 +264,11 @@ namespace projeto.Migrations
                     b.Property<DateTime>("TerminoWA")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("VagaId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("GftId");
+                    b.HasIndex("AlocacaoId");
 
-                    b.HasIndex("VagaId");
+                    b.HasIndex("GftId");
 
                     b.ToTable("funcionarios");
                 });
@@ -430,15 +449,22 @@ namespace projeto.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("projeto.Models.Funcionario", b =>
+            modelBuilder.Entity("projeto.Models.Alocacao", b =>
                 {
-                    b.HasOne("projeto.Models.Gft", "Gft")
-                        .WithMany()
-                        .HasForeignKey("GftId");
-
                     b.HasOne("projeto.Models.Vaga", "Vaga")
                         .WithMany()
                         .HasForeignKey("VagaId");
+                });
+
+            modelBuilder.Entity("projeto.Models.Funcionario", b =>
+                {
+                    b.HasOne("projeto.Models.Alocacao", "Alocacao")
+                        .WithMany()
+                        .HasForeignKey("AlocacaoId");
+
+                    b.HasOne("projeto.Models.Gft", "Gft")
+                        .WithMany()
+                        .HasForeignKey("GftId");
                 });
 
             modelBuilder.Entity("projeto.Models.FuncionarioTecnologia", b =>

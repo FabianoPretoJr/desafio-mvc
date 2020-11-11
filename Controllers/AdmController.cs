@@ -44,7 +44,6 @@ namespace projeto.Controllers
         {
             ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
             ViewBag.gfts = database.gfts.Where(g => g.Status == true).ToList();
-            // ViewBag.vagas = database.vagas.Where(v => v.Status == true).ToList();
 
             return View();
         }
@@ -62,10 +61,8 @@ namespace projeto.Controllers
             funcionarioView.Matricula = func.Matricula;
             funcionarioView.Nome = func.Nome;
             funcionarioView.GftID = func.Gft.Id;
-            // funcionarioView.VagaID = func.Vaga.Id;
 
             ViewBag.gfts = database.gfts.ToList();
-            // ViewBag.vagas = database.vagas.ToList();
 
             return View(funcionarioView);
         }
@@ -103,7 +100,7 @@ namespace projeto.Controllers
         [Authorize]
         public IActionResult Alocacao()
         {
-            ViewBag.funcionario = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Vaga == null && f.Status == true).ToList();
+            ViewBag.funcionario = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Alocacao == null && f.Status == true).ToList();
             ViewBag.vaga = database.vagas.Include(v => v.VagaTecnologias).ThenInclude(v => v.Tecnologia).Where(v => v.QtdVaga > 0 && v.Status == true).ToList();
             return View();
         }
@@ -111,7 +108,7 @@ namespace projeto.Controllers
         [Authorize]
         public IActionResult Historico()
         {
-            var func = database.funcionarios.Include(f => f.Vaga).Where(f => f.Vaga != null).ToList();
+            var func = database.funcionarios.Include(f => f.Alocacao).ThenInclude(f => f.Vaga).Where(f => f.Alocacao != null).ToList();
             return View(func);
         }
 

@@ -254,6 +254,41 @@ namespace projeto.Controllers
 
             /////////////////////////////////////////////////////////////////////////////////////////////
 
+            Alocacao alo1 = new Alocacao();
+            alo1.Id = 0;
+            alo1.InicioAlocacao = DateTime.Now;
+            alo1.Vaga = database.vagas.First(v => v.Id == 1);
+            database.alocacoes.Add(alo1);
+            database.SaveChanges();
+
+            var funcio1 = database.funcionarios.First(f => f.Id == 1);
+            funcio1.Alocacao = database.alocacoes.First(a => a.Id == 1);
+            database.SaveChanges();
+
+            Alocacao alo2 = new Alocacao();
+            alo2.Id = 0;
+            alo2.InicioAlocacao = DateTime.Now;
+            alo2.Vaga = database.vagas.First(v => v.Id == 4);
+            database.alocacoes.Add(alo2);
+            database.SaveChanges();
+
+            var funcio2 = database.funcionarios.First(f => f.Id == 2);
+            funcio2.Alocacao = database.alocacoes.First(a => a.Id == 2);
+            database.SaveChanges();
+
+            Alocacao alo3 = new Alocacao();
+            alo3.Id = 0;
+            alo3.InicioAlocacao = DateTime.Now;
+            alo3.Vaga = database.vagas.First(v => v.Id == 2);
+            database.alocacoes.Add(alo3);
+            database.SaveChanges();
+
+            var funcio3 = database.funcionarios.First(f => f.Id == 3);
+            funcio3.Alocacao = database.alocacoes.First(a => a.Id == 3);
+            database.SaveChanges();
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
+
             Popular pop = new Popular();
 
             pop.ClaimCont = "Dados";
