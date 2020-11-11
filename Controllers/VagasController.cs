@@ -4,9 +4,11 @@ using projeto.Data;
 using projeto.DTO;
 using projeto.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace projeto.Controllers
 {
+    [Authorize]
     public class VagasController : Controller
     {
         private readonly ApplicationDbContext database;

@@ -4,9 +4,11 @@ using System.Linq;
 using projeto.Data;
 using projeto.Models;
 using projeto.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace projeto.Controllers
 {
+    [Authorize]
     public class FuncionarioController : Controller
     {
         private readonly ApplicationDbContext database;
@@ -15,6 +17,7 @@ namespace projeto.Controllers
             this.database = database;
         }
 
+        [HttpPost]
         public IActionResult Salvar(FuncionarioDTO funcionarioTemporario)
         {
             if (ModelState.IsValid)
@@ -53,6 +56,7 @@ namespace projeto.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult Atualizar(FuncionarioDTO funcionarioTemporario)
         { 
             if (ModelState.IsValid)
@@ -79,6 +83,7 @@ namespace projeto.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult Deletar(int id)
         {
             if (id > 0)

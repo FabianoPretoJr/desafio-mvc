@@ -4,9 +4,11 @@ using projeto.Models;
 using projeto.Data;
 using projeto.DTO;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace projeto.Controllers 
 {
+    [Authorize]
     public class UnidadeController : Controller
     {
         private readonly ApplicationDbContext database;
@@ -42,6 +44,7 @@ namespace projeto.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult Atualizar(GftDTO unidadeTemporaria)
         {
             if (ModelState.IsValid)
@@ -65,6 +68,7 @@ namespace projeto.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult Deletar(int id)
         {
             if (id > 0)

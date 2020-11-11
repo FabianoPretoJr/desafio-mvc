@@ -5,6 +5,7 @@ using projeto.DTO;
 using projeto.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace projeto.Controllers
 {
@@ -16,6 +17,7 @@ namespace projeto.Controllers
             this.database = database;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             var login = database.popular.Where(p => p.ClaimCont == "Dados" && p.ValueCont == true).ToList();
@@ -37,6 +39,7 @@ namespace projeto.Controllers
             return View(func);
         }
 
+        [Authorize]
         public IActionResult CadastrarFuncionario()
         {
             ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
@@ -46,6 +49,7 @@ namespace projeto.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult EditarFuncionario(int id)
         {
             FuncionarioDTO funcionarioView = new FuncionarioDTO();
@@ -72,12 +76,14 @@ namespace projeto.Controllers
             return View(vagas);
         }
 
+        [Authorize]
         public IActionResult CadastrarVaga()
         {
             ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
             return View();
         }
 
+        [Authorize]
         public IActionResult EditarVaga(int id)
         {
             VagaDTO vagaView = new VagaDTO();
@@ -94,16 +100,19 @@ namespace projeto.Controllers
             return View(vagaView);
         }
 
+        [Authorize]
         public IActionResult Alocacao()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Historico()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Tecnologia()
         {
             var tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
@@ -111,11 +120,13 @@ namespace projeto.Controllers
             return View(tecnologias);
         }
 
+        [Authorize]
         public IActionResult CadastrarTecnologia()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult EditarTecnologia(int id)
         {
             TecnologiaDTO tecnologiaView = new TecnologiaDTO();
@@ -127,6 +138,7 @@ namespace projeto.Controllers
             return View(tecnologiaView);
         }
 
+        [Authorize]
         public IActionResult Unidades()
         {
             var unidades = database.gfts.Where(u => u.Status == true).ToList();
@@ -134,11 +146,13 @@ namespace projeto.Controllers
             return View(unidades);
         }
 
+        [Authorize]
         public IActionResult CadastrarUnidade()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult EditarUnidade(int id)
         {
             GftDTO gftView = new GftDTO();

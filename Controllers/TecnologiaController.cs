@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using projeto.Models;
 using projeto.DTO;
 using projeto.Data;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace projeto.Controllers
 {
+    [Authorize]
     public class TecnologiaController : Controller
     {
         private readonly ApplicationDbContext database;
