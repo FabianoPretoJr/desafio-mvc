@@ -18,6 +18,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/")]
         public IActionResult Index()
         {
             var login = database.popular.Where(p => p.ClaimCont == "Dados" && p.ValueCont == true).ToList();
@@ -33,6 +34,7 @@ namespace projeto.Controllers
             return View();
         }
 
+        [Route("wa/funcionarios")]
         public IActionResult Funcionarios()
         {
             var func = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Status == true).ToList();
@@ -40,6 +42,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/funcionarios/cadastrar")]
         public IActionResult CadastrarFuncionario()
         {
             ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
@@ -70,6 +73,7 @@ namespace projeto.Controllers
             return View(funcionarioView);
         }
 
+        [Route("wa/vagas")]
         public IActionResult Vagas()
         {
             var vagas = database.vagas.Include(v => v.VagaTecnologias).ThenInclude(v => v.Tecnologia).Where(v => v.Status == true).ToList();
@@ -77,6 +81,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/vagas/cadastrar")]
         public IActionResult CadastrarVaga()
         {
             ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
@@ -88,7 +93,7 @@ namespace projeto.Controllers
         {
             VagaDTO vagaView = new VagaDTO();
 
-            var vaga = database.vagas.First(v => v.Id == id);
+            var vaga = database.vagas.Include(v => v.VagaTecnologias).ThenInclude(v => v.Tecnologia).First(v => v.Id == id);
 
             vagaView.Id = vaga.Id;
             vagaView.Projeto = vaga.Projeto;
@@ -96,11 +101,16 @@ namespace projeto.Controllers
             vagaView.AberturaVaga = vaga.AberturaVaga;
             vagaView.DescricaoVaga = vaga.DescricaoVaga;
             vagaView.QtdVaga = vaga.QtdVaga;
+            var vatec = database.vagastecnologias.First(vt => vt.VagaID == vaga.Id);
+            vagaView.TecnologiaID = vatec.TecnologiaID;
+
+            ViewBag.tecnologias = database.tecnologias.ToList();
 
             return View(vagaView);
         }
 
         [Authorize]
+        [Route("wa/alocar")]
         public IActionResult Alocacao()
         {
             ViewBag.funcionario = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Alocacao == null && f.Status == true).ToList();
@@ -109,6 +119,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/historico")]
         public IActionResult Historico()
         {
             var func = database.funcionarios.Include(f => f.Alocacao).ThenInclude(f => f.Vaga).Where(f => f.Alocacao != null).ToList();
@@ -116,6 +127,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/tecnologia")]
         public IActionResult Tecnologia()
         {
             var tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
@@ -124,6 +136,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/tecnologia/cadastrar")]
         public IActionResult CadastrarTecnologia()
         {
             return View();
@@ -142,6 +155,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/unidades")]
         public IActionResult Unidades()
         {
             var unidades = database.gfts.Where(u => u.Status == true).ToList();
@@ -150,6 +164,7 @@ namespace projeto.Controllers
         }
 
         [Authorize]
+        [Route("wa/unidades/cadastrar")]
         public IActionResult CadastrarUnidade()
         {
             return View();

@@ -27,7 +27,11 @@
 
     <label>Descrição da vaga</label>
     <textarea rows="5" class="form-control" asp-for="DescricaoVaga"></textarea> 
-    <span asp-validation-for="DescricaoVaga"></span><br/><br/>
+    <span asp-validation-for="DescricaoVaga"></span><br/>
+
+    <label>Tecnologia</label>
+    <select class="form-control" asp-for="TecnologiaID" asp-items='@(new SelectList(@ViewBag.tecnologias, "Id", "Nome"))'></select>
+    <span asp-validation-for="TecnologiaID"></span><br/>
 
     <button class="btn btn-success">Atualizar vaga</button>
 </form>

@@ -28,7 +28,7 @@ namespace projeto.Controllers
                 v.CodVaga = vagaTemporaria.CodVaga;
                 v.Projeto = vagaTemporaria.Projeto;
                 v.QtdVaga = vagaTemporaria.QtdVaga;
-                v.AberturaVaga = vagaTemporaria.AberturaVaga;
+                v.AberturaVaga = DateTime.Now;
                 v.DescricaoVaga = vagaTemporaria.DescricaoVaga;
                 v.Status = true;
 
@@ -47,6 +47,7 @@ namespace projeto.Controllers
             }
             else
             {
+                ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
                 return View("../Adm/CadastrarVaga");
             }
         }
@@ -64,13 +65,22 @@ namespace projeto.Controllers
                 vaga.QtdVaga = vagaTemporaria.QtdVaga;
                 vaga.AberturaVaga = vagaTemporaria.AberturaVaga;
                 vaga.DescricaoVaga = vagaTemporaria.DescricaoVaga;
+                var vatec = database.vagastecnologias.First(vt => vt.VagaID == vagaTemporaria.Id);
+                database.vagastecnologias.Remove(vatec);
+                database.SaveChanges();
 
+                VagaTecnologia vt = new VagaTecnologia();
+
+                vt.Vaga = database.vagas.First(vaga => vaga.Id == vagaTemporaria.Id);
+                vt.Tecnologia = database.tecnologias.First(t => t.Id == vagaTemporaria.TecnologiaID);
+                database.vagastecnologias.Add(vt);
                 database.SaveChanges();
 
                 return RedirectToAction("Vagas", "Adm");
             }
             else
             {
+                ViewBag.tecnologias = database.tecnologias.ToList();
                 return View("../Adm/EditarVaga");
             }
         }

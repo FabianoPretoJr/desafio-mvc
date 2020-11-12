@@ -25,10 +25,10 @@ namespace projeto.Controllers
                 Funcionario func = new Funcionario();
 
                 func.Id = funcionarioTemporario.Id;
-                func.InicioWA = funcionarioTemporario.InicioWA;
+                func.InicioWA = DateTime.Now;
                 func.Cargo = funcionarioTemporario.Cargo;
                 func.Matricula = funcionarioTemporario.Matricula;
-                func.TerminoWA = funcionarioTemporario.TerminoWA;
+                func.TerminoWA = DateTime.Now.AddDays(15);
                 func.Nome = funcionarioTemporario.Nome;
                 func.Gft = database.gfts.First(g => g.Id == funcionarioTemporario.GftID);
                 func.Status = true;
@@ -48,8 +48,8 @@ namespace projeto.Controllers
             }
             else
             {
-                ViewBag.gfts = database.gfts.ToList();
-                ViewBag.vagas = database.vagas.ToList();
+                ViewBag.tecnologias = database.tecnologias.Where(t => t.Status == true).ToList();
+                ViewBag.gfts = database.gfts.Where(g => g.Status == true).ToList();
 
                 return View("../Adm/CadastrarFuncionario");
             }
@@ -84,7 +84,7 @@ namespace projeto.Controllers
             else
             {
                 ViewBag.gfts = database.gfts.ToList();
-                ViewBag.vagas = database.vagas.ToList();
+                ViewBag.tecnologias = database.tecnologias.ToList();
 
                 return View("../Adm/EditarFuncionario");
             }
