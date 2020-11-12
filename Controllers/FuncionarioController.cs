@@ -117,6 +117,10 @@ namespace projeto.Controllers
             func.Alocacao = database.alocacoes.First(a => a.Id == alo.Id);
             database.SaveChanges();
 
+            var vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
+            vaga.QtdVaga = vaga.QtdVaga - 1;
+            database.SaveChanges();
+
             return RedirectToAction("Alocacao", "Adm");
         }
 
