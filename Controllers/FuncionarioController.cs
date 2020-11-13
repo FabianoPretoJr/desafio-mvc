@@ -123,23 +123,32 @@ namespace projeto.Controllers
         [HttpPost]
         public IActionResult AdcVaga(AlocacaoDTO alocacaoTemporaria)
         {
-            Alocacao alo = new Alocacao();
+            if(ModelState.IsValid)
+            {
+                Alocacao alo = new Alocacao();
 
-            alo.Id = alocacaoTemporaria.Id;
-            alo.InicioAlocacao = DateTime.Now;
-            alo.Vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
-            database.alocacoes.Add(alo);
-            database.SaveChanges();
+                alo.Id = alocacaoTemporaria.Id;
+                alo.InicioAlocacao = DateTime.Now;
+                alo.Vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
+                database.alocacoes.Add(alo);
+                database.SaveChanges();
 
-            var func = database.funcionarios.First(f => f.Id == alocacaoTemporaria.FuncionarioID);
-            func.Alocacao = database.alocacoes.First(a => a.Id == alo.Id);
-            database.SaveChanges();
+                var func = database.funcionarios.First(f => f.Id == alocacaoTemporaria.FuncionarioID);
+                func.Alocacao = database.alocacoes.First(a => a.Id == alo.Id);
+                database.SaveChanges();
 
-            var vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
-            vaga.QtdVaga = vaga.QtdVaga - 1;
-            database.SaveChanges();
-
-            return RedirectToAction("Alocacao", "Adm");
+                var vaga = database.vagas.First(v => v.Id == alocacaoTemporaria.VagaID);
+                vaga.QtdVaga = vaga.QtdVaga - 1;
+                database.SaveChanges();
+                return RedirectToAction("Alocacao", "Adm");
+            }
+            else
+            {
+                ViewBag.funcionario = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).Where(f => f.Alocacao == null && f.Status == true).ToList();
+                ViewBag.vaga = database.vagas.Include(v => v.VagaTecnologias).ThenInclude(v => v.Tecnologia).Where(v => v.QtdVaga > 0 && v.Status == true).ToList();
+                return View("../Adm/Alocacao");
+            }
+            
         }
 
         [HttpPost]

@@ -10,19 +10,20 @@
     <input type="hidden" asp-for="Id">
 
     <label>CEP</label>
-    <input type="text" class="form-control" asp-for="Cep">
+    <input type="text" class="form-control" asp-for="Cep" placeholder="ex: 12345-678">
     <span asp-validation-for="Cep"></span><br/>
 
     <label>Cidade</label>
-    <input type="text" class="form-control" asp-for="Cidade">
+    <input type="text" class="form-control" asp-for="Cidade" placeholder="ex: Município">
     <span asp-validation-for="Cidade"></span><br/>
 
     <label>Endereço</label>
-    <input type="text" class="form-control" asp-for="Endereco">
+    <input type="text" class="form-control" asp-for="Endereco" placeholder="ex: Rua, Nº e bairro">
     <span asp-validation-for="Endereco"></span><br/>
 
     <label>Estado</label>
     <select class="form-control" asp-for="Estado">
+        <option value="">Selecione</option>
         <option value="Acre">Acre</option>
         <option value="Alagoas">Alagoas</option>
         <option value="Amapá">Amapá</option>
@@ -54,12 +55,12 @@
     <span asp-validation-for="Estado"></span><br/>
 
     <label>Nome</label>
-    <input type="text" class="form-control" asp-for="Nome">
+    <input type="text" class="form-control" asp-for="Nome" placeholder="ex: Local da unidade">
     <span asp-validation-for="Nome"></span><br/>
 
     <label>Telefone</label>
-    <input type="phone" class="form-control" asp-for="Telefone">
-    <span asp-validation-for="Telefone"></span><br/>
+    <input type="phone" class="form-control" asp-for="Telefone" placeholder="ex: (xx) 99999-9999">
+    <span asp-validation-for="Telefone"></span><br/><br/>
 
     <button class="btn btn-success">Atualizar unidade</button>
 </form>

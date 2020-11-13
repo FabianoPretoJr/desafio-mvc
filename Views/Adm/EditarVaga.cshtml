@@ -10,15 +10,15 @@
     <input type="hidden" asp-for="Id" id="id">
 
     <label>Código da vaga</label>
-    <input type="text" class="form-control" asp-for="CodVaga">
+    <input type="text" class="form-control" asp-for="CodVaga" placeholder="ex: #ABCXYZ">
     <span asp-validation-for="CodVaga"></span><br/>
 
     <label>Projeto referente a vaga</label>
-    <input type="text" asp-for="Projeto" class="form-control">
+    <input type="text" asp-for="Projeto" class="form-control" placeholder="ex: Projeto banco ABC">
     <span asp-validation-for="Projeto"></span><br/>
 
     <label>Quantidadde de vagas</label>
-    <input type="number" class="form-control" asp-for="QtdVaga">
+    <input type="number" class="form-control" asp-for="QtdVaga" placeholder="ex: 10">
     <span asp-validation-for="QtdVaga"></span><br/>
 
     <label>Data de abertura de vaga</label>
@@ -26,7 +26,7 @@
     <span asp-validation-for="AberturaVaga"></span><br/>
 
     <label>Descrição da vaga</label>
-    <textarea rows="5" class="form-control" asp-for="DescricaoVaga"></textarea> 
+    <textarea rows="5" class="form-control" asp-for="DescricaoVaga" placeholder="ex: Descreva as atribuições e requisitos da vaga."></textarea> 
     <span asp-validation-for="DescricaoVaga"></span><br/>
 
     <fieldset>
@@ -41,7 +41,7 @@
 
     <input type="hidden" asp-for="TecnologiaIDAntigos" id="tecIdAntigos">
     <input type="hidden" asp-for="TecnologiaID" id="tecId">
-    <span asp-validation-for="TecnologiaID"></span>
+    <span asp-validation-for="TecnologiaID"></span><br/><br/>
 
     <button class="btn btn-success">Atualizar vaga</button>
 </form>

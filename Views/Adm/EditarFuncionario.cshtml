@@ -10,27 +10,29 @@
     <input type="hidden" asp-for="Id" id="id">
 
     <label>Cargo</label>
-    <input type="text" class="form-control" asp-for="Cargo" placeholder="Software enginner" id="cargo">
+    <input type="text" class="form-control" asp-for="Cargo" placeholder="ex: Software enginner" id="cargo">
     <span asp-validation-for="Cargo"></span><br/>
+
+    <label>Matricula</label>
+    <input type="text" class="form-control" asp-for="Matricula" id="matricula" placeholder="ex: 1234567">
+    <span asp-validation-for="Matricula"></span><br/>
+
+    <label>Nome</label>
+    <input type="text" class="form-control" asp-for="Nome" id="nome" placeholder="ex: Nome completo">
+    <span asp-validation-for="Nome"></span><br/>
 
     <label>Inicio WA</label>
     <input type="date" class="form-control" asp-for="InicioWA" id="inicioWa">
     <span asp-validation-for="InicioWA"></span><br/>
-
-    <label>Matricula</label>
-    <input type="text" class="form-control" asp-for="Matricula" id="matricula">
-    <span asp-validation-for="Matricula"></span><br/>
-
-    <label>Nome</label>
-    <input type="text" class="form-control" asp-for="Nome" id="nome">
-    <span asp-validation-for="Nome"></span><br/>
 
     <label>Termino WA</label>
     <input type="date" class="form-control" asp-for="TerminoWA" id="terminoWa">
     <span asp-validation-for="TerminoWA"></span><br/>
 
     <label>Unidade GFT</label>
-    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))' id="unidade"></select>
+    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))' id="unidade">
+        <option value="">Selecione</option>
+    </select>
     <span asp-validation-for="GftID"></span><br/>
 
     <fieldset>
@@ -45,7 +47,7 @@
 
     <input type="hidden" asp-for="TecnologiaIDAntigos" id="tecIdAntigos">
     <input type="hidden" asp-for="TecnologiaID" id="tecId">
-    <span asp-validation-for="TecnologiaID"></span>
+    <span asp-validation-for="TecnologiaID"></span><br/><br/>
 
     <button class="btn btn-success">Atualizar funcionário</button>
 </form>

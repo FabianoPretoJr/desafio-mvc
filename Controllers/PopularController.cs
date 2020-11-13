@@ -33,9 +33,9 @@ namespace projeto.Controllers
             this.database = database;
         }
 
-        public string Email = "fabiano@gft.com";
-        public string Password = "Biano15;-;";
-        public string ConfirmPassword = "Biano15;-;";
+        public string Email = "clecio@gft.com";
+        public string Password = "Abc123:)";
+        public string ConfirmPassword = "Abc123:)";
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
@@ -98,6 +98,24 @@ namespace projeto.Controllers
             database.tecnologias.Add(tec5);
             database.SaveChanges();
 
+            Tecnologia tec6 = new Tecnologia();
+            tec6.Nome = "Node";
+            tec6.Status = true;
+            database.tecnologias.Add(tec6);
+            database.SaveChanges();
+
+            Tecnologia tec7 = new Tecnologia();
+            tec7.Nome = "React";
+            tec7.Status = true;
+            database.tecnologias.Add(tec7);
+            database.SaveChanges();
+
+            Tecnologia tec8 = new Tecnologia();
+            tec8.Nome = "TypeScript";
+            tec8.Status = true;
+            database.tecnologias.Add(tec8);
+            database.SaveChanges();
+
             /////////////////////////////////////////////////////////////////////////////////////////////
 
             Gft unidade1 = new Gft();
@@ -151,6 +169,12 @@ namespace projeto.Controllers
             database.vagastecnologias.Add(vt1);
             database.SaveChanges();
 
+            VagaTecnologia vt11 = new VagaTecnologia();
+            vt11.Vaga = database.vagas.First(v => v.Id == vaga1.Id);
+            vt11.Tecnologia = database.tecnologias.First(t => t.Id == 3);
+            database.vagastecnologias.Add(vt11);
+            database.SaveChanges();
+
             Vaga vaga2 = new Vaga();
             vaga2.CodVaga = "#RABANK";
             vaga2.Projeto = "Rabo Bank";
@@ -183,6 +207,12 @@ namespace projeto.Controllers
             database.vagastecnologias.Add(vt3);
             database.SaveChanges();
 
+            VagaTecnologia vt31 = new VagaTecnologia();
+            vt31.Vaga = database.vagas.First(v => v.Id == vaga3.Id);
+            vt31.Tecnologia = database.tecnologias.First(t => t.Id == 2);
+            database.vagastecnologias.Add(vt31);
+            database.SaveChanges();
+
             Vaga vaga4 = new Vaga();
             vaga4.CodVaga = "#SULAME";
             vaga4.Projeto = "Sul Ámerica";
@@ -195,8 +225,20 @@ namespace projeto.Controllers
 
             VagaTecnologia vt4 = new VagaTecnologia();
             vt4.Vaga = database.vagas.First(v => v.Id == vaga4.Id);
-            vt4.Tecnologia = database.tecnologias.First(t => t.Id == 4);
+            vt4.Tecnologia = database.tecnologias.First(t => t.Id == 6);
             database.vagastecnologias.Add(vt4);
+            database.SaveChanges();
+
+            VagaTecnologia vt41 = new VagaTecnologia();
+            vt41.Vaga = database.vagas.First(v => v.Id == vaga4.Id);
+            vt41.Tecnologia = database.tecnologias.First(t => t.Id == 7);
+            database.vagastecnologias.Add(vt41);
+            database.SaveChanges();
+
+            VagaTecnologia vt42 = new VagaTecnologia();
+            vt42.Vaga = database.vagas.First(v => v.Id == vaga4.Id);
+            vt42.Tecnologia = database.tecnologias.First(t => t.Id == 8);
+            database.vagastecnologias.Add(vt42);
             database.SaveChanges();
 
             /////////////////////////////////////////////////////////////////////////////////////////////
@@ -216,6 +258,12 @@ namespace projeto.Controllers
             ft1.Funcionario = database.funcionarios.First(f => f.Id == func1.Id);
             ft1.Tecnologia = database.tecnologias.First(t => t.Id == 1);
             database.funcionariostecnologias.Add(ft1);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft11 = new FuncionarioTecnologia();
+            ft11.Funcionario = database.funcionarios.First(f => f.Id == func1.Id);
+            ft11.Tecnologia = database.tecnologias.First(t => t.Id == 7);
+            database.funcionariostecnologias.Add(ft11);
             database.SaveChanges();
 
             Funcionario func2 = new Funcionario();
@@ -252,6 +300,115 @@ namespace projeto.Controllers
             database.funcionariostecnologias.Add(ft3);
             database.SaveChanges();
 
+            FuncionarioTecnologia ft31 = new FuncionarioTecnologia();
+            ft31.Funcionario = database.funcionarios.First(f => f.Id == func3.Id);
+            ft31.Tecnologia = database.tecnologias.First(t => t.Id == 8);
+            database.funcionariostecnologias.Add(ft31);
+            database.SaveChanges();
+
+            Funcionario func4 = new Funcionario();
+            func4.Cargo = "Desenvolvedor Backend";
+            func4.InicioWA = DateTime.Now;
+            func4.Matricula = "4523284";
+            func4.Nome = "Felipe Fernandes";
+            func4.TerminoWA = DateTime.Now.AddDays(15);
+            func4.Gft = database.gfts.First(g => g.Id == 1);
+            func4.Status = true;
+            database.funcionarios.Add(func4);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft4 = new FuncionarioTecnologia();
+            ft4.Funcionario = database.funcionarios.First(f => f.Id == func4.Id);
+            ft4.Tecnologia = database.tecnologias.First(t => t.Id == 2);
+            database.funcionariostecnologias.Add(ft4);
+            database.SaveChanges();
+
+            Funcionario func5 = new Funcionario();
+            func5.Cargo = "Desenvolvedora Backend";
+            func5.InicioWA = DateTime.Now;
+            func5.Matricula = "4524952";
+            func5.Nome = "kemylly Cavalcante";
+            func5.TerminoWA = DateTime.Now.AddDays(15);
+            func5.Gft = database.gfts.First(g => g.Id == 1);
+            func5.Status = true;
+            database.funcionarios.Add(func5);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft5 = new FuncionarioTecnologia();
+            ft5.Funcionario = database.funcionarios.First(f => f.Id == func5.Id);
+            ft5.Tecnologia = database.tecnologias.First(t => t.Id == 1);
+            database.funcionariostecnologias.Add(ft5);
+            database.SaveChanges();
+
+            Funcionario func6 = new Funcionario();
+            func6.Cargo = "Desenvolvedora SalesForce";
+            func6.InicioWA = DateTime.Now;
+            func6.Matricula = "4522152";
+            func6.Nome = "Samara Santos";
+            func6.TerminoWA = DateTime.Now.AddDays(15);
+            func6.Gft = database.gfts.First(g => g.Id == 1);
+            func6.Status = true;
+            database.funcionarios.Add(func6);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft6 = new FuncionarioTecnologia();
+            ft6.Funcionario = database.funcionarios.First(f => f.Id == func6.Id);
+            ft6.Tecnologia = database.tecnologias.First(t => t.Id == 4);
+            database.funcionariostecnologias.Add(ft6);
+            database.SaveChanges();
+
+            Funcionario func7 = new Funcionario();
+            func7.Cargo = "Desenvolvedor Backend";
+            func7.InicioWA = DateTime.Now;
+            func7.Matricula = "4521642";
+            func7.Nome = "Matheus Ribeiro";
+            func7.TerminoWA = DateTime.Now.AddDays(15);
+            func7.Gft = database.gfts.First(g => g.Id == 1);
+            func7.Status = true;
+            database.funcionarios.Add(func7);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft7 = new FuncionarioTecnologia();
+            ft7.Funcionario = database.funcionarios.First(f => f.Id == func7.Id);
+            ft7.Tecnologia = database.tecnologias.First(t => t.Id == 1);
+            database.funcionariostecnologias.Add(ft7);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft71 = new FuncionarioTecnologia();
+            ft71.Funcionario = database.funcionarios.First(f => f.Id == func7.Id);
+            ft71.Tecnologia = database.tecnologias.First(t => t.Id == 2);
+            database.funcionariostecnologias.Add(ft71);
+            database.SaveChanges();
+
+            Funcionario func8 = new Funcionario();
+            func8.Cargo = "Desenvolvedor FullStack";
+            func8.InicioWA = DateTime.Now;
+            func8.Matricula = "4523549";
+            func8.Nome = "João Oliveira";
+            func8.TerminoWA = DateTime.Now.AddDays(15);
+            func8.Gft = database.gfts.First(g => g.Id == 1);
+            func8.Status = true;
+            database.funcionarios.Add(func8);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft8 = new FuncionarioTecnologia();
+            ft8.Funcionario = database.funcionarios.First(f => f.Id == func8.Id);
+            ft8.Tecnologia = database.tecnologias.First(t => t.Id == 6);
+            database.funcionariostecnologias.Add(ft8);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft81 = new FuncionarioTecnologia();
+            ft81.Funcionario = database.funcionarios.First(f => f.Id == func8.Id);
+            ft81.Tecnologia = database.tecnologias.First(t => t.Id == 7);
+            database.funcionariostecnologias.Add(ft81);
+            database.SaveChanges();
+
+            FuncionarioTecnologia ft82 = new FuncionarioTecnologia();
+            ft82.Funcionario = database.funcionarios.First(f => f.Id == func8.Id);
+            ft82.Tecnologia = database.tecnologias.First(t => t.Id == 8);
+            database.funcionariostecnologias.Add(ft82);
+            database.SaveChanges();
+
             /////////////////////////////////////////////////////////////////////////////////////////////
 
             Alocacao alo1 = new Alocacao();
@@ -265,6 +422,10 @@ namespace projeto.Controllers
             funcio1.Alocacao = database.alocacoes.First(a => a.Id == 1);
             database.SaveChanges();
 
+            var v1 = database.vagas.First(v => v.Id == 1);
+            v1.QtdVaga = v1.QtdVaga - 1;
+            database.SaveChanges();
+
             Alocacao alo2 = new Alocacao();
             alo2.Id = 0;
             alo2.InicioAlocacao = DateTime.Now;
@@ -276,6 +437,10 @@ namespace projeto.Controllers
             funcio2.Alocacao = database.alocacoes.First(a => a.Id == 2);
             database.SaveChanges();
 
+            var v2 = database.vagas.First(v => v.Id == 4);
+            v2.QtdVaga = v2.QtdVaga - 1;
+            database.SaveChanges();
+
             Alocacao alo3 = new Alocacao();
             alo3.Id = 0;
             alo3.InicioAlocacao = DateTime.Now;
@@ -285,6 +450,25 @@ namespace projeto.Controllers
 
             var funcio3 = database.funcionarios.First(f => f.Id == 3);
             funcio3.Alocacao = database.alocacoes.First(a => a.Id == 3);
+            database.SaveChanges();
+
+            var v3 = database.vagas.First(v => v.Id == 2);
+            v3.QtdVaga = v3.QtdVaga - 1;
+            database.SaveChanges();
+
+            Alocacao alo4 = new Alocacao();
+            alo4.Id = 0;
+            alo4.InicioAlocacao = DateTime.Now;
+            alo4.Vaga = database.vagas.First(v => v.Id == 1);
+            database.alocacoes.Add(alo4);
+            database.SaveChanges();
+
+            var funcio4 = database.funcionarios.First(f => f.Id == 5);
+            funcio4.Alocacao = database.alocacoes.First(a => a.Id == 4);
+            database.SaveChanges();
+
+            var v4 = database.vagas.First(v => v.Id == 1);
+            v4.QtdVaga = v4.QtdVaga - 1;
             database.SaveChanges();
 
             /////////////////////////////////////////////////////////////////////////////////////////////

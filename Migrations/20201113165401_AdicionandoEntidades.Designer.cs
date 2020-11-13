@@ -9,7 +9,7 @@ using projeto.Data;
 namespace projeto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201111163543_AdicionandoEntidades")]
+    [Migration("20201113165401_AdicionandoEntidades")]
     partial class AdicionandoEntidades
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

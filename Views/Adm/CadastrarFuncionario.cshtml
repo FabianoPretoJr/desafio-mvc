@@ -10,19 +10,21 @@
     <input type="hidden" asp-for="Id" value="0">
 
     <label>Cargo</label>
-    <input type="text" class="form-control" asp-for="Cargo" placeholder="Software enginner">
+    <input type="text" class="form-control" asp-for="Cargo" placeholder="ex: Software enginner">
     <span asp-validation-for="Cargo"></span><br/>
 
     <label>Matricula</label>
-    <input type="text" class="form-control" asp-for="Matricula">
+    <input type="text" class="form-control" asp-for="Matricula" placeholder="ex: 1234567">
     <span asp-validation-for="Matricula"></span><br/>
 
     <label>Nome</label>
-    <input type="text" class="form-control" asp-for="Nome">
+    <input type="text" class="form-control" asp-for="Nome" placeholder="ex: Nome completo">
     <span asp-validation-for="Nome"></span><br/>
 
     <label>Unidade GFT</label>
-    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))'></select>
+    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))'>
+        <option value="">Selecione</option>
+    </select>
     <span asp-validation-for="GftID"></span><br/>
 
     <fieldset>
@@ -36,7 +38,7 @@
     </fieldset>
 
     <input type="hidden" asp-for="TecnologiaID" id="tecId">
-    <span asp-validation-for="TecnologiaID"></span>
+    <span asp-validation-for="TecnologiaID"></span><br/><br/>
 
     <button class="btn btn-success">Cadastrar funcionário</button>
 </form>

@@ -16,9 +16,13 @@ namespace projeto.DTO
         public DateTime InicioWA { get; set; }
 
         [Required(ErrorMessage="Campo matricula obrigatório!")]
+        [StringLength(7, ErrorMessage="Deve conter 7 caracteres!")]
+        [MinLength(7, ErrorMessage="Deve conter 7 caracteres!")]
         public string Matricula { get; set; }
 
         [Required(ErrorMessage="Campo nome obrigatório!")]
+        [StringLength(70, ErrorMessage="Máximo 70 caracteres!")]
+        [MinLength(3, ErrorMessage="mínimo 3 caracteres!")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage="Campo termino WA obrigatório!")]
@@ -27,7 +31,7 @@ namespace projeto.DTO
         [Required(ErrorMessage="Campo vaga obrigatório!")]
         public int VagaID { get; set; }
 
-        [Required(ErrorMessage="Campo GFT obrigatório!")]
+        [Required(ErrorMessage="Campo unidade GFT obrigatório!")]
         public int GftID { get; set; }
 
         [Required(ErrorMessage="Campo tecnologias obrigatório!")]

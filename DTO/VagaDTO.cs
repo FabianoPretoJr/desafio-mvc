@@ -21,6 +21,7 @@ namespace projeto.DTO
         public string Projeto { get; set; }
 
         [Required(ErrorMessage="Campo quantidade de vagas obrigatório!")]
+        [Range(1, 1000, ErrorMessage="Suportado apenas valores de 1 a 1000!")]
         public int QtdVaga { get; set; }
 
         [Required(ErrorMessage="Campo tecnologia das vagas obrigatório!")]

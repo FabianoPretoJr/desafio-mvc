@@ -23,6 +23,7 @@ namespace projeto.DTO
         public string Nome { get; set; }
 
         [Required(ErrorMessage="Campo telefone obrigatório!")]
+        [Phone(ErrorMessage="Número de telefone inválido!")]
         public string Telefone { get; set; }
     }
 }
