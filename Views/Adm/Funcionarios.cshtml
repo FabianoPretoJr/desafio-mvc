@@ -36,13 +36,15 @@
     }
 </style>
 
+<div>
+    <h2>Funcionários em WA</h2><br/>
 @if(SignInManager.IsSignedIn(User))
 {
-    <div>
-        <h2>Funcionários em WA</h2><br/>
-        <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarFuncionario">Cadastrar funcionários</a>
-    </div>
+
+    <a class="btn btn-primary" asp-controller="Adm" asp-action="CadastrarFuncionario">Cadastrar funcionários</a>
+
 }
+</div>
 
 <hr/>
 <table id="funcionarios" class="table table-striped table-bordered">
