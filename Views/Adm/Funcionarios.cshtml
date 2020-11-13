@@ -12,7 +12,7 @@
             //"info" : false,
             "language" : {
                 "lengthMenu": "Mostrando _MENU_ registros por página",
-                "zeroRecords": "Desculpe, nada encontrado",
+                "zeroRecords": "Nenhum funcionário cadastrado no sistema.",
                 "info": "Mostrando página _PAGE_ de _PAGES_",
                 "infoEmpty": "Nenhum funcionário cadastrado no sistema.",
                 "search": "Buscar:",
@@ -52,9 +52,9 @@
         <tr>
             <th>Id</th>
             <th>Cargo</th>
-            <th>Inicio WA</th>
             <th>Matricula</th>
             <th>Nome</th>
+            <th>Inicio WA</th>
             <th>Termino WA</th>
             <th>Tecnologias</th>
             @* <th>Vaga</th> *@
@@ -72,9 +72,9 @@
                 <tr>
                     <td>@func.Id</td>
                     <td class="cargo">@func.Cargo</td>
-                    <td>@func.InicioWA.ToString("dd/MM/yyyy")</td>
                     <td>@func.Matricula</td>
                     <td>@func.Nome</td>
+                    <td>@func.InicioWA.ToString("dd/MM/yyyy")</td>
                     <td>@func.TerminoWA.ToString("dd/MM/yyyy")</td>
                     <td>
                     @foreach (var tecnologia in func.FuncionarioTecnologias.Select(f => f.Tecnologia))

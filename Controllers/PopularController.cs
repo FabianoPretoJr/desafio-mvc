@@ -346,7 +346,7 @@ namespace projeto.Controllers
             func6.Matricula = "4522152";
             func6.Nome = "Samara Santos";
             func6.TerminoWA = DateTime.Now.AddDays(15);
-            func6.Gft = database.gfts.First(g => g.Id == 1);
+            func6.Gft = database.gfts.First(g => g.Id == 2);
             func6.Status = true;
             database.funcionarios.Add(func6);
             database.SaveChanges();
@@ -363,7 +363,7 @@ namespace projeto.Controllers
             func7.Matricula = "4521642";
             func7.Nome = "Matheus Ribeiro";
             func7.TerminoWA = DateTime.Now.AddDays(15);
-            func7.Gft = database.gfts.First(g => g.Id == 1);
+            func7.Gft = database.gfts.First(g => g.Id == 3);
             func7.Status = true;
             database.funcionarios.Add(func7);
             database.SaveChanges();
