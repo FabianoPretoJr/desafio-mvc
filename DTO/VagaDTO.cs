@@ -24,6 +24,7 @@ namespace projeto.DTO
         public int QtdVaga { get; set; }
 
         [Required(ErrorMessage="Campo tecnologia das vagas obrigatório!")]
-        public int TecnologiaID { get; set; }
+        public string TecnologiaID { get; set; }
+        public string TecnologiaIDAntigos { get; set; }
     }
 }

@@ -7,35 +7,47 @@
 <hr/>
 
 <form method="POST" asp-controller="Funcionario" asp-action="Atualizar">
-    <input type="hidden" asp-for="Id">
+    <input type="hidden" asp-for="Id" id="id">
 
     <label>Cargo</label>
-    <input type="text" class="form-control" asp-for="Cargo" placeholder="Software enginner">
+    <input type="text" class="form-control" asp-for="Cargo" placeholder="Software enginner" id="cargo">
     <span asp-validation-for="Cargo"></span><br/>
 
     <label>Inicio WA</label>
-    <input type="date" class="form-control" asp-for="InicioWA">
+    <input type="date" class="form-control" asp-for="InicioWA" id="inicioWa">
     <span asp-validation-for="InicioWA"></span><br/>
 
     <label>Matricula</label>
-    <input type="text" class="form-control" asp-for="Matricula">
+    <input type="text" class="form-control" asp-for="Matricula" id="matricula">
     <span asp-validation-for="Matricula"></span><br/>
 
     <label>Nome</label>
-    <input type="text" class="form-control" asp-for="Nome">
+    <input type="text" class="form-control" asp-for="Nome" id="nome">
     <span asp-validation-for="Nome"></span><br/>
 
     <label>Termino WA</label>
-    <input type="date" class="form-control" asp-for="TerminoWA">
+    <input type="date" class="form-control" asp-for="TerminoWA" id="terminoWa">
     <span asp-validation-for="TerminoWA"></span><br/>
 
     <label>Unidade GFT</label>
-    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))'></select>
+    <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))' id="unidade"></select>
     <span asp-validation-for="GftID"></span><br/>
 
-    <label>Tecnologia</label>
-    <select class="form-control" asp-for="TecnologiaID" asp-items='@(new SelectList(@ViewBag.tecnologias, "Id", "Nome"))'></select>
-    <span asp-validation-for="TecnologiaID"></span><br/>
+    <fieldset>
+        <legend>Tecnologias</legend>
+        <br/>
+        <a class="btn btn-primary" id="tecnologia">Adc outra tecnologia</a>
+        <br/><br/>
+
+        <div id="render">
+        </div>
+    </fieldset>
+
+    <input type="hidden" asp-for="TecnologiaIDAntigos" id="tecIdAntigos">
+    <input type="hidden" asp-for="TecnologiaID" id="tecId">
+    <span asp-validation-for="TecnologiaID"></span>
 
     <button class="btn btn-success">Atualizar funcionário</button>
 </form>
+
+<script src="~/js/edi-funcionario.js"></script>

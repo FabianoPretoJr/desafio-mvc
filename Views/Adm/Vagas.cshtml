@@ -76,7 +76,7 @@
                     <td>
                     @foreach (var tecnologia in vagas.VagaTecnologias.Select(v => v.Tecnologia))
                     {
-                        @tecnologia.Nome
+                        @tecnologia.Nome<br/>
                     }
                     </td>
                     @if (SignInManager.IsSignedIn(User))

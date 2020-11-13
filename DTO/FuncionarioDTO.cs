@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace projeto.DTO
 {
@@ -29,7 +30,8 @@ namespace projeto.DTO
         [Required(ErrorMessage="Campo GFT obrigatório!")]
         public int GftID { get; set; }
 
-        [Required(ErrorMessage="Campo tecnologia obrigatório!")]
-        public int TecnologiaID { get; set; }
+        [Required(ErrorMessage="Campo tecnologias obrigatório!")]
+        public string TecnologiaID { get; set; }
+        public string TecnologiaIDAntigos { get; set; }
     }
 }

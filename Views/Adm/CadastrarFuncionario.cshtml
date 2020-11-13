@@ -3,21 +3,10 @@
     ViewData["Title"] = "Cad Funcionários";
 }
 
-<style>
-    .button-plus {
-        padding: 10px;
-        background-color: #1b6ec2;
-        border-color: #1861ac;
-        cursor: pointer;
-        border-radius: 4px;
-        margin: 20px;
-    }
-</style>
-
 <h3>Novo funcionário</h3>
 <hr/>
 
-<form method="POST" asp-controller="Funcionario" asp-action="Salvar">
+<form method="POST" asp-action="Salvar" asp-controller="Funcionario">
     <input type="hidden" asp-for="Id" value="0">
 
     <label>Cargo</label>
@@ -36,15 +25,20 @@
     <select class="form-control" asp-for="GftID" asp-items='@(new SelectList(@ViewBag.gfts, "Id", "Nome"))'></select>
     <span asp-validation-for="GftID"></span><br/>
 
-    <label>Tecnologia</label>
-    <select class="form-control" asp-for="TecnologiaID" asp-items='@(new SelectList(@ViewBag.tecnologias, "Id", "Nome"))'></select>
-    <span asp-validation-for="TecnologiaID"></span><br/>
+    <fieldset>
+        <legend>Tecnologias</legend>
+        <br/>
+        <a class="btn btn-primary" id="tecnologia">Adc outra tecnologia</a>
+        <br/><br/>
 
-    <a class="button-plus" id="tecnologia">+ tecnologia</a><br/><br/>
+        <div id="render">
+        </div>
+    </fieldset>
 
-    <div id="render">
-
-    </div>
+    <input type="hidden" asp-for="TecnologiaID" id="tecId">
+    <span asp-validation-for="TecnologiaID"></span>
 
     <button class="btn btn-success">Cadastrar funcionário</button>
 </form>
+
+<script src="~/js/cad-funcionario.js"></script>

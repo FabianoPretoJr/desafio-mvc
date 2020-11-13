@@ -7,7 +7,7 @@
 <hr/>
 
 <form method="POST" asp-controller="Vagas" asp-action="Atualizar">
-    <input type="hidden" asp-for="Id">
+    <input type="hidden" asp-for="Id" id="id">
 
     <label>Código da vaga</label>
     <input type="text" class="form-control" asp-for="CodVaga">
@@ -29,9 +29,21 @@
     <textarea rows="5" class="form-control" asp-for="DescricaoVaga"></textarea> 
     <span asp-validation-for="DescricaoVaga"></span><br/>
 
-    <label>Tecnologia</label>
-    <select class="form-control" asp-for="TecnologiaID" asp-items='@(new SelectList(@ViewBag.tecnologias, "Id", "Nome"))'></select>
-    <span asp-validation-for="TecnologiaID"></span><br/>
+    <fieldset>
+        <legend>Tecnologias</legend>
+        <br/>
+        <a class="btn btn-primary" id="tecnologia">Adc outra tecnologia</a>
+        <br/><br/>
+
+        <div id="render">
+        </div>
+    </fieldset>
+
+    <input type="hidden" asp-for="TecnologiaIDAntigos" id="tecIdAntigos">
+    <input type="hidden" asp-for="TecnologiaID" id="tecId">
+    <span asp-validation-for="TecnologiaID"></span>
 
     <button class="btn btn-success">Atualizar vaga</button>
 </form>
+
+<script src="~/js/edi-vaga.js"></script>

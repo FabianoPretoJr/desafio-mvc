@@ -58,14 +58,22 @@ namespace projeto.Controllers
 
             var func = database.funcionarios.Include(f => f.Gft).Include(f => f.FuncionarioTecnologias).ThenInclude(f => f.Tecnologia).First(f => f.Id == id);
 
+            funcionarioView.Id = func.Id;
             funcionarioView.Cargo = func.Cargo;
             funcionarioView.InicioWA = func.InicioWA;
             funcionarioView.TerminoWA = func.TerminoWA;
             funcionarioView.Matricula = func.Matricula;
             funcionarioView.Nome = func.Nome;
             funcionarioView.GftID = func.Gft.Id;
-            var funtec = database.funcionariostecnologias.First(ft => ft.FuncionarioID == func.Id);
-            funcionarioView.TecnologiaID = funtec.TecnologiaID;
+
+            var funtec = database.funcionariostecnologias.Where(ft => ft.FuncionarioID == func.Id).ToList();
+            string tecId = "";
+            for(int i = 0; i < funtec.Count; i++)
+            {
+                tecId = tecId + "," + funtec[i].TecnologiaID;
+            }
+            tecId = tecId.Remove(0, 1);
+            funcionarioView.TecnologiaID = tecId;
 
             ViewBag.gfts = database.gfts.ToList();
             ViewBag.tecnologias = database.tecnologias.ToList();
@@ -102,7 +110,15 @@ namespace projeto.Controllers
             vagaView.DescricaoVaga = vaga.DescricaoVaga;
             vagaView.QtdVaga = vaga.QtdVaga;
             var vatec = database.vagastecnologias.First(vt => vt.VagaID == vaga.Id);
-            vagaView.TecnologiaID = vatec.TecnologiaID;
+
+            var vagtec = database.vagastecnologias.Where(vt => vt.VagaID == vaga.Id).ToList();
+            string tecId = "";
+            for(int i = 0; i < vagtec.Count; i++)
+            {
+                tecId = tecId + "," + vagtec[i].TecnologiaID;
+            }
+            tecId = tecId.Remove(0, 1);
+            vagaView.TecnologiaID = tecId;
 
             ViewBag.tecnologias = database.tecnologias.ToList();
 
